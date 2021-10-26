@@ -1,13 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
-import HelloWorld from './components/HelloWorld';
+import Login from './components/Login';
+import logo  from './ECSlogo.jpg';
 
 function App() {
   return (
     <div className="App">
-      <HelloWorld/>
+      <img alt="ECS logo" src={logo} className="ECSlogo"/>
+      <Login/>
     </div>
   );
 }
