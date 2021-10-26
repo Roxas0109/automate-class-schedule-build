@@ -1,0 +1,39 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+.nav-container{
+    position: relative;
+    background-color: #D22030;
+    height: 100%;
+}
+
+nav{
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-container h1{
+    padding: 0 10%;
+    color: white;
+}
+
+nav > button{
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-size: large;
+    color: white;
+    background-color: transparent;
+    border: 0;
+    height: 100%;
+}
+
+button:hover{
+    background-color: black;
+}

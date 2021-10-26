@@ -1,6 +1,6 @@
-import './Login.css'
-import React, { Component } from 'react'
-
+import './Login.css';
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 export default class Login extends Component {
 
     constructor(props){
@@ -16,11 +16,6 @@ export default class Login extends Component {
         this.setState({
             [e.target.name]:e.target.value,
         });
-    }
-
-    handleSubmit = (e) =>{
-        e.preventDefault();
-        console.log(this.state);
     }
 
     render() {
@@ -46,9 +41,9 @@ export default class Login extends Component {
                                 placeholder="Password..."/>
                         </label>
                         <br />
-                        <button type="submit" 
-                            onClick={this.handleSubmit}
-                            className="submitbtn">Submit</button>
+                        <Link to = "/upload">
+                            <button className="submitbtn">Submit</button>
+                        </Link>
                     </form>
                 </div>
             </div>
