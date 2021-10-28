@@ -24,6 +24,9 @@ function App() {
         <Route path = "/upload">
           <Upload/>
         </Route>
+        <Route path = "/import">
+          <Import/>
+        </Route>
       </Switch>
     </div>
     </Router>
