@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Login from './components/Login';
 import Upload from './components/Upload';
+import Import from './components/Import';
 import logo  from './ECSlogo.jpg';
 import {
   BrowserRouter as Router,
