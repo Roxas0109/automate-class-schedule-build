@@ -14,11 +14,11 @@
     text-align: center;
 }
 
-label, input , button{
+.fLabel, .uInput{
     margin: 5%;
 }
 
-.btn {
+.submitBtn {
     background-color: #D22030;
     border: none;
     border-radius: 5px;
@@ -26,9 +26,10 @@ label, input , button{
     font-size: large;
     color: white;
     padding: 2%;
+    margin: 2%;
   }
 
-.btn:hover {
+.submitBtn:hover {
     background-color: #555;
     color: white;
 }

@@ -1,6 +1,6 @@
 
 
-import './Upload.css'
+
 import NavigationBar from './NavigationBar'
 import React, { Component } from 'react';
 import logo from './../ECSlogo.jpg';

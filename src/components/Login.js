@@ -13,8 +13,8 @@ export default function Login() {
                 <h1>Log In</h1>
                 <br />
                 <form>
-                    <label><b>Username</b>
-                        <input type="text"
+                    <label className="fLabel"><b>Username</b>
+                        <input type="text" className="uInput"
                             name="username"
                             onChange={(e)=>{
                                 setUserName(e.target.value);
@@ -22,8 +22,8 @@ export default function Login() {
                             placeholder="Username..."/>
                     </label>
                     <br />
-                    <label><b>Password</b>
-                        <input type="password" 
+                    <label className="fLabel"><b>Password</b>
+                        <input type="password" className="uInput"
                             name="password"
                             onChange={(e)=>{
                                 setPassword(e.target.value);
@@ -31,8 +31,8 @@ export default function Login() {
                             placeholder="Password..."/>
                     </label>
                     <br />
-                    <Link to='/upload'>
-                        <button type="submit" className="btn">Submit</button>
+                    <Link to='/term'>
+                        <button type="submit" className="submitBtn">Submit</button>
                     </Link>
                 </form>
             </div>

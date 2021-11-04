@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login';
-import Upload from './components/Upload';
 import Import from './components/Import';
 import logo  from './ECSlogo.jpg';
 import {
@@ -9,6 +8,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import Term from './components/Term';
 
 function App() {
   return (
@@ -21,8 +21,8 @@ function App() {
           <img alt="ECS logo" src={logo} className="ECSlogo"/>
           <Login/>
         </Route>
-        <Route path = "/upload">
-          <Upload/>
+        <Route path = "/term">
+          <Term/>
         </Route>
         <Route path = "/import">
           <Import/>
