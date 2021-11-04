@@ -5,9 +5,10 @@ import Import from './components/Import';
 import logo  from './ECSlogo.jpg';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
 } from "react-router-dom";
+import Content from './components/Content';
 import Term from './components/Term';
 
 function App() {
@@ -16,18 +17,22 @@ function App() {
     <div className="App">
       
       
-      <Switch>
-        <Route exact path = "/">
-          <img alt="ECS logo" src={logo} className="ECSlogo"/>
-          <Login/>
+      <Routes>
+
+        <Route path="/" element={
+          <div>
+            <img alt="ECS logo" src={logo} className="ECSlogo"/>
+            <Login/>
+          </div>
+        }/>
+
+        <Route path="/content" element={<Content/>}>
+          <Route index element={<Term/>}/>
+          <Route path="import" element={<Import/>}/>
         </Route>
-        <Route path = "/term">
-          <Term/>
-        </Route>
-        <Route path = "/import">
-          <Import/>
-        </Route>
-      </Switch>
+
+      </Routes>
+      
     </div>
     </Router>
   );

@@ -31,7 +31,7 @@ export default function Login() {
                             placeholder="Password..."/>
                     </label>
                     <br />
-                    <Link to='/term'>
+                    <Link to='/content'>
                         <button type="submit" className="submitBtn">Submit</button>
                     </Link>
                 </form>
