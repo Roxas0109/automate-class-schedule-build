@@ -1,53 +1,41 @@
-import './Login.css';
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-export default class Login extends Component {
+import './Login.css'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-    constructor(props){
-        super(props);
-        this.state={
-            username:'',
-            password:'',
-        }
-    }
+export default function Login() {
 
-    // using arrow functions to avoid binding
-    handleChange = (e) =>{
-        this.setState({
-            [e.target.name]:e.target.value,
-        });
-    }
+    const [username, setUserName] = useState('');
+    const [password, setPassword] = useState('');
 
-    render() {
-        return (
-            <div className = "loginContainer">
-                <div className="wrapper">
-                    <h1>Log In</h1>
+    return (
+        <div className = "loginContainer">
+            <div className="wrapper">
+                <h1>Log In</h1>
+                <br />
+                <form>
+                    <label><b>Username</b>
+                        <input type="text"
+                            name="username"
+                            onChange={(e)=>{
+                                setUserName(e.target.value);
+                            }} 
+                            placeholder="Username..."/>
+                    </label>
                     <br />
-                    <form>
-                        <label><b>Username</b>
-                            <input type="text"
-                                name="username" 
-                                value={this.state.username} 
-                                onChange={this.handleChange} 
-                                placeholder="Username..."/>
-                        </label>
-                        <br />
-                        <label><b>Password</b>
-                            <input type="password" 
-                                name="password"
-                                value={this.state.password} 
-                                onChange={this.handleChange} 
-                                placeholder="Password..."/>
-                        </label>
-                        <br />
-                        <Link to = "/upload">
-                            <button className="submitbtn">Submit</button>
-                        </Link>
-                    </form>
-                </div>
+                    <label><b>Password</b>
+                        <input type="password" 
+                            name="password"
+                            onChange={(e)=>{
+                                setPassword(e.target.value);
+                            }} 
+                            placeholder="Password..."/>
+                    </label>
+                    <br />
+                    <Link to='/upload'>
+                        <button type="submit" className="btn">Submit</button>
+                    </Link>
+                </form>
             </div>
-        )
-    }
+        </div>
+    )
 }
-
