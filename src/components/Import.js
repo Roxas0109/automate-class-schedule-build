@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
 import './Import.css'
+import React from 'react'
 
-export default class ImportComponent extends Component {
-    render() {
-      return (
-          <div class="importWrapper">
+export default function Import() {
+    return (
+        <div class="importWrapper">
               <div className="importContainer">
                     <h1>Import Degree Progress Report (DPR)</h1>
                     <div className="continueBtn">
@@ -12,6 +11,6 @@ export default class ImportComponent extends Component {
                     </div>
               </div>
           </div>
-      )
-    }
+    )
 }
+
