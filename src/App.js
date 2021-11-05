@@ -3,6 +3,7 @@ import './App.css';
 import Login from './components/Login';
 import Import from './components/Import';
 import Submitted from './components/Submitted';
+import AddCourses from './components/AddCourses'
 import logo  from './ECSlogo.jpg';
 import {
   BrowserRouter as Router,
