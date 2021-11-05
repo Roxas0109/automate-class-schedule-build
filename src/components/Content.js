@@ -5,12 +5,13 @@ import { Outlet } from 'react-router-dom';
 
 
 export default function Content() {
-
     return (
-        <div>
+        <div style={{height: "100%"}}>
             <NavigationBar/>
             <img alt="ECS logo" src={logo} className="ECSlogo"/>
+            <div className="page-content">
             <Outlet/>
+            </div>
         </div>
     )
 }

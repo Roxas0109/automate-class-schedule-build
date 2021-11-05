@@ -13,15 +13,32 @@ img.ECSlogo{
   margin-right: auto;
   margin-top: 10px;
   width: 25%;
+  user-select: none;
 }
 
 .redBtn{
   font-size: large;
   color: white;
   box-shadow: none;
-  border: 1px solid black;
+  border: none;
   padding: 5px 20px 5px 20px;
   border-radius: 500px;
   background-color: #D22030;
   background-repeat: no-repeat;
+  cursor: pointer;
+  transition: background-color 0.27s;
+  margin: 8px 0;
+  user-select: none;
+}
+
+.redBtn:hover {
+  background-color: #911620;
+}
+
+.page-content {
+  height: 100%;
+  width: 100%;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
 }

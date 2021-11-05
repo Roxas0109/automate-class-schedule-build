@@ -1,14 +1,10 @@
-*{
-    box-sizing: border-box;
-}
-
 body{
     margin: 0;
 }
+
 .nav-container{
     position: relative;
     background-color: #D22030;
-    height: 100%;
 }
 
 nav{
@@ -21,6 +17,7 @@ nav{
 .nav-container h1{
     padding: 0 10%;
     color: white;
+    user-select: none;
 }
 
 nav > button{
@@ -32,8 +29,11 @@ nav > button{
     background-color: transparent;
     border: 0;
     height: 100%;
+    cursor: pointer;
+    transition: background-color 0.27s;
+    user-select: none;
 }
 
 button:hover{
-    background-color: black;
+    background-color: #911620;
 }

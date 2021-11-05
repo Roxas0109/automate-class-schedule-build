@@ -1,4 +1,12 @@
+.importWrapper {
+  width: 100%;
+  height: calc(100% - 135px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .importContainer{
-    margin-top: 25%;
-    text-align: center;
+  margin-top: -4em;
+  text-align: center;
 }

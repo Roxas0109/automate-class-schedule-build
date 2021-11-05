@@ -12,11 +12,9 @@ export default function Term() {
                     <label>Spring 2020</label>
                 </div>
 
-                <div className="continueBtn">
                     <Link to={'import'}>
                         <button class="redBtn">Save and Continue</button>
                     </Link>
-                </div>
             </div>
         </div>
     )

@@ -12,13 +12,12 @@ export default function Login() {
             <div className="wrapper">
                 <h1>Log In</h1>
                 <br />
-                <form>
                     <label className="fLabel"><b>Username</b>
                         <input type="text" className="uInput"
                             name="username"
                             onChange={(e)=>{
                                 setUserName(e.target.value);
-                            }} 
+                            }}
                             placeholder="Username..."/>
                     </label>
                     <br />
@@ -27,14 +26,13 @@ export default function Login() {
                             name="password"
                             onChange={(e)=>{
                                 setPassword(e.target.value);
-                            }} 
+                            }}
                             placeholder="Password..."/>
                     </label>
                     <br />
                     <Link to='/content'>
-                        <button type="submit" className="submitBtn">Submit</button>
+                        <button type="submit" className="redBtn">Submit</button>
                     </Link>
-                </form>
             </div>
         </div>
     )
