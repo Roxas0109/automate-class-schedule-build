@@ -1,7 +1,3 @@
 .contentContext{
     height: 100%;
 }
-
-LoadingOverlay{
-    position: absolute;
-}
