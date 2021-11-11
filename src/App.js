@@ -3,6 +3,7 @@ import './App.css';
 import Login from './components/Login';
 import Import from './components/Import';
 import Submitted from './components/Submitted';
+import HomePage from './components/HomePage/HomePage';
 import logo  from './ECSlogo.jpg';
 import {
   BrowserRouter as Router,
@@ -27,7 +28,7 @@ function App() {
 
         <Route path="/content" element={<Content/>}>
           <Route index element={<Term/>}/>
-          <Route path="import" element={<Import/>}/>
+          <Route path="import" element={<HomePage/>}/>
         </Route>
 
       </Routes>

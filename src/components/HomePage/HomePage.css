@@ -1,0 +1,24 @@
+.homeCont{
+    text-align: center;
+    position: relative;
+    height: 100%;
+}
+
+.eCourses{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.cCourses{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.cont{
+    position: absolute;
+    left: auto;
+    right: auto;
+    
+}
