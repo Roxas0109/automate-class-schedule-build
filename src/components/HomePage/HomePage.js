@@ -9,7 +9,9 @@ export default function HomePage() {
         <div className="homeCont">
             <h1>Term: Spring 2022</h1>
             <button className="redBtn">Add Class</button>
-            <ProjectedClasses />
+            <div className="pClasses">
+                <ProjectedClasses />
+            </div>
             <div className="eCourses">
                 <EligibleCourses />
             </div>
