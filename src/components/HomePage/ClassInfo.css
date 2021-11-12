@@ -6,6 +6,7 @@
     display: none;
     justify-content: center;
     border-radius: 10px;
+    text-align: left;
 }
 
 .show {
