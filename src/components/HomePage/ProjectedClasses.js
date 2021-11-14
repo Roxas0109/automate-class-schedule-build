@@ -1,5 +1,6 @@
 import React from 'react'
 import ClassInfo from './ClassInfo'
+import './ProjectedClasses.css'
 
 export default function ProjectedClasses() {
 
@@ -23,21 +24,20 @@ export default function ProjectedClasses() {
 
     const listItems = data.map((item) => {
         return (
-            <li>
-                <h3>{item.Course}</h3> <br/>
-                <h4>{item.Title}</h4>
+            <div className="courseContainer">
+                <h3>{item.Course}</h3> <br />
+                <h5>{item.Title}</h5>
                 <ClassInfo label='info'>
-                    <p><b>Title:</b> {item.Title}<br/>
-                    <b>Description:</b>{item.Description}</p></ClassInfo></li>)
+                    <p><b>Title:</b> {item.Title}<br />
+                        <b>Description:</b>{item.Description}</p></ClassInfo></div>)
 
     })
 
     return (
         <div>
             <h2>Projected Classes:</h2>
-            <ul>
-                {listItems}
-            </ul>
+            {listItems}
+
         </div>
     )
 }
