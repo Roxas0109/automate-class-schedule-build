@@ -18,7 +18,7 @@ export default function HomePage() {
             <div className="cCourses">
                 <CompletedCourses />
             </div>
-            <button className="redBtn cont">Continue</button>
+            <button className="redBtn">Continue</button>
         </div>
     )
 }
