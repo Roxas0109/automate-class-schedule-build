@@ -25,11 +25,13 @@ export default function ProjectedClasses() {
     const listItems = data.map((item) => {
         return (
             <div className="courseContainer">
-                <h3>{item.Course}</h3> <br />
-                <h5>{item.Title}</h5>
-                <ClassInfo label='info'>
+                <h3>{item.Course}</h3>
+                <ClassInfo label='i' title={item.Title}>
                     <p><b>Title:</b> {item.Title}<br />
-                        <b>Description:</b>{item.Description}</p></ClassInfo></div>)
+                        <b>Description:</b>{item.Description}</p>
+                </ClassInfo>
+            </div>
+        )
 
     })
 

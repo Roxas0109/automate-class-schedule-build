@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import './ClassInfo.css'
 
-export default function ClassInfo({ children, label }) {
+export default function ClassInfo({ children, label, title }) {
 
     const [isCollapsed, setIsCollapsed] = useState(false)
 
     return (
-        <div>
+        <>
             <button className='redBtn' onClick={()=>{
                 setIsCollapsed(!isCollapsed)
             }}>{label}</button>
+            <h5>{title}</h5>
             <div className= {isCollapsed ? 'content show' : 'content'}>{children}</div>
-        </div>
+        </>
     )
 }
