@@ -12,6 +12,11 @@ import {
 } from "react-router-dom";
 import Content from './components/Content';
 import Term from './components/Term';
+import ReactDOM from 'react-dom'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faPlus, faAngleLeft, faSignOutAlt  } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faPlus, faAngleLeft, faSignOutAlt)
 
 function App() {
   return (
@@ -26,7 +31,7 @@ function App() {
           </div>
         }/>
 
-        <Route path="/content" element={<Content/>}>
+        <Route path="content" element={<Content/>}>
           <Route index element={<Term/>}/>
           <Route path="import" element={<Import/>}/>
         </Route>
