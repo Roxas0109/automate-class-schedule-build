@@ -1,0 +1,37 @@
+.container {
+    text-align: center;
+}
+
+.continueBtn {
+    align-items: center;
+    text-align: center;
+}
+
+.fLabel, .uInput{
+    margin: 2%;
+}
+
+.uInput {
+    border: none;
+    font-size: 14px;
+    padding: 4px 8px;
+
+    border-radius:36px;
+    display:inline-block;
+    overflow:hidden;
+    background:#cccccc;
+    border:1px solid #cccccc;
+    text-align: center;
+  }
+
+.selectBox{
+    width:140px;
+    height:40px;
+    border:0px;
+    outline:none;
+    text-align: center;
+}
+
+.redBtn {
+     margin: 2%;
+}
