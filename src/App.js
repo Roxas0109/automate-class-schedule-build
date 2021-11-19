@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Import from './components/Import';
 import Submitted from './components/Submitted';
 import AddCourses from './components/AddCourses'
+import HomePage from './components/HomePage/HomePage';
 import logo  from './ECSlogo.jpg';
 import {
   BrowserRouter as Router,
@@ -33,7 +34,7 @@ function App() {
 
         <Route path="content" element={<Content/>}>
           <Route index element={<Term/>}/>
-          <Route path="import" element={<Import/>}/>
+          <Route path="import" element={<HomePage/>}/>
         </Route>
 
       </Routes>

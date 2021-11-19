@@ -1,4 +1,4 @@
-.importWrapper {
+.importContainer {
   width: 100%;
   height: calc(100% - 135px);
   display: flex;
@@ -6,7 +6,8 @@
   justify-content: center;
 }
 
-.importContainer{
-  margin-top: -4em;
+.importWrapper{
   text-align: center;
+  
 }
+
