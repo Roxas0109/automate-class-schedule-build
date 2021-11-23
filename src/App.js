@@ -15,9 +15,9 @@ import Content from './components/Content';
 import Term from './components/Term';
 import ReactDOM from 'react-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPlus, faAngleLeft, faSignOutAlt  } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo  } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faPlus, faAngleLeft, faSignOutAlt)
+library.add(faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo)
 
 function App() {
   return (

@@ -26,7 +26,7 @@ export default function ProjectedClasses() {
         return (
             <div className="courseContainer">
                 <h3>{item.Course}</h3>
-                <ClassInfo label='i' title={item.Title}>
+                <ClassInfo title={item.Title}>
                     <p><b>Title:</b> {item.Title}<br />
                         <b>Description:</b> {item.Description}</p>
                 </ClassInfo>

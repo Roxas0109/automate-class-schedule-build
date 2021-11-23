@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import './ClassInfo.css'
 
@@ -9,7 +10,7 @@ export default function ClassInfo({ children, label, title }) {
         <>
             <button className='redBtn' onClick={()=>{
                 setIsCollapsed(!isCollapsed)
-            }}>{label}</button>
+            }}><FontAwesomeIcon icon="info"/>{label}</button>
             <h5>{title}</h5>
             <div className= {isCollapsed ? 'content show' : 'content'}>{children}</div>
         </>
