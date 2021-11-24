@@ -8,7 +8,7 @@ export default function ClassInfo({ children, label, title }) {
 
     return (
         <>
-            <button className='redBtn' onClick={()=>{
+            <button className='redBtn info' onClick={()=>{
                 setIsCollapsed(!isCollapsed)
             }}><FontAwesomeIcon icon="info"/>{label}</button>
             <h5>{title}</h5>

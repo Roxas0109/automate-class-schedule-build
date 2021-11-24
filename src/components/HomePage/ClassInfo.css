@@ -12,3 +12,7 @@
 .show {
     display: flex;
 }
+
+.info{
+    padding: 5px;
+}
