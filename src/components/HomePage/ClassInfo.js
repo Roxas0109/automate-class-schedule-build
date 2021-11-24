@@ -11,6 +11,7 @@ export default function ClassInfo({ children, label, title }) {
             <button className='redBtn info' onClick={()=>{
                 setIsCollapsed(!isCollapsed)
             }}><FontAwesomeIcon icon="info"/>{label}</button>
+            <button className='redBtn minus'><FontAwesomeIcon icon="minus"/>{label}</button>
             <h5>{title}</h5>
             <div className= {isCollapsed ? 'content show' : 'content'}>{children}</div>
         </>

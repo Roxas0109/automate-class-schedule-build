@@ -14,5 +14,9 @@
 }
 
 .info{
-    padding: 5px;
+    padding: 2px 10px;
+}
+
+.minus{
+    padding: 2px 5px;
 }

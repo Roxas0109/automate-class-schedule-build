@@ -30,7 +30,7 @@ export default function AddCourses() {
                 </label>
                 <br />
                 <div className="continueBtn">
-                    <Link to="/home">
+                    <Link to="/content/home">
                         <button class="redBtn"><FontAwesomeIcon icon="angle-left" /> Back</button>
                     </Link>
                     <button class="redBtn"><FontAwesomeIcon icon="plus" /> Add Class</button>

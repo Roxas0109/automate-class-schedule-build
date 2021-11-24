@@ -5,7 +5,7 @@ import Import from './components/Import';
 import Submitted from './components/Submitted';
 import AddCourses from './components/AddCourses'
 import HomePage from './components/HomePage/HomePage';
-import logo  from './ECSlogo.jpg';
+import logo from './ECSlogo.jpg';
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,31 +15,35 @@ import Content from './components/Content';
 import Term from './components/Term';
 import ReactDOM from 'react-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo  } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo, faUpload, faMinus } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo)
+library.add(faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo, faUpload, faMinus)
 
 function App() {
   return (
     <Router>
-    <div className="App">
-      <Routes>
+      <div className="App">
+        <Routes>
 
-        <Route path="/" element={
-          <div>
-            <img alt="ECS logo" src={logo} className="ECSlogo"/>
-            <Login/>
-          </div>
-        }/>
+          <Route path="/" element={
+            <div>
+              <img alt="ECS logo" src={logo} className="ECSlogo" />
+              <Login />
+            </div>
+          } />
 
-        <Route path="content" element={<Content/>}>
-          <Route index element={<Term/>}/>
-          <Route path="import" element={<HomePage/>}/>
-        </Route>
+          <Route path="content" element={<Content />}>
+            <Route index element={<Term />} />
+            <Route path="import" element={<Import />} />
+            <Route path="home" element={<HomePage />} />
+            <Route path="add" element={<AddCourses />} />
+            <Route path="submit" element={<Submitted />} />
 
-      </Routes>
+          </Route>
 
-    </div>
+        </Routes>
+
+      </div>
     </Router>
   );
 }
