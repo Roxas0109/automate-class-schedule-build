@@ -13,7 +13,7 @@ export default function Term() {
             </div>
 
             <Link to={'import'}>
-                <button className="redBtn">Save and Continue</button>
+                <button className="csn-btn">Save and Continue</button>
             </Link>
         </div>
     )

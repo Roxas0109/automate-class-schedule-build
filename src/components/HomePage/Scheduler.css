@@ -1,0 +1,26 @@
+.scheduler-container {
+  width: 90%;
+  margin: auto;
+}
+
+.course-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.tooltip .csn-btn-icon {
+  margin: 0 4px;
+}
+
+.scheduler-subtitle {
+  margin-top: 2em;
+}
+
+.home-comp hr {
+  width: 90%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(0,0,0,0.2);
+}

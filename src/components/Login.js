@@ -10,28 +10,25 @@ export default function Login() {
     return (
         <div className = "loginContainer">
             <div className="wrapper">
-                <h1>Log In</h1>
+                <h1 className="grab">Log In</h1>
                 <br />
-                    <label className="fLabel"><b>Username</b>
-                        <input type="text" className="uInput"
-                            name="username"
-                            onChange={(e)=>{
-                                setUserName(e.target.value);
-                            }}
-                            placeholder="Username..."/>
-                    </label>
+                <input type="text" className="csn-inp csn-expand"
+                    name="username"
+                    onChange={(e)=>{
+                        setUserName(e.target.value);
+                    }}
+                    placeholder="Username..."/>
                     <br />
-                    <label className="fLabel"><b>Password</b>
-                        <input type="password" className="uInput"
-                            name="password"
-                            onChange={(e)=>{
-                                setPassword(e.target.value);
-                            }}
-                            placeholder="Password..."/>
-                    </label>
+                  <input type="password" className="csn-inp csn-expand"
+                      name="password"
+                      onChange={(e)=>{
+                          setPassword(e.target.value);
+                      }}
+                      placeholder="Password..."/>
+                    <br />
                     <br />
                     <Link to='/content'>
-                        <button type="submit" className="redBtn">Submit</button>
+                        <button type="submit" className="csn-btn">Submit</button>
                     </Link>
             </div>
         </div>

@@ -1,46 +1,14 @@
 .loginContainer {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10%;
-    background: whitesmoke;
+    margin-top: 5%;
+    background: rgba(0,0,0,0.05);
     border-radius: 25px;
-    border-color: #D22030;
-    border-style: solid;
-    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.4);
     width: 80%;
-    max-width: 400px;
-}
-
-.wrapper {
+    max-width: 600px;
+    padding: 4em;
+    font-family: 'Open Sans', sans-serif;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 30%);
+    border: 1px solid #D22030;
     text-align: center;
-}
-
-.fLabel, .uInput{
-    margin: 5%;
-}
-
-.uInput {
-  border: none;
-  font-size: 14px;
-  padding: 4px 8px;
-}
-
-.uInput:focus {
-
-}
-
-.submitBtn {
-    background-color: #D22030;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: large;
-    color: white;
-    padding: 2%;
-    margin: 2%;
-  }
-
-.submitBtn:hover {
-    background-color: #555;
-    color: white;
 }

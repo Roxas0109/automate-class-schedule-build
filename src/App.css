@@ -42,3 +42,61 @@ img.ECSlogo{
   margin-left: auto;
   margin-right: auto;
 }
+
+
+/* Standards */
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.csn-btn {
+  border-radius: 8px;
+  background-color: #D22030;
+  color: white;
+  font-size: 16px;
+  border: none;
+  padding: 0.8em 2em;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.csn-btn-icon {
+  background-color: #D22030;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  font-size: 14px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.csn-inp {
+  background-color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 1em 2em;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.csn-expand {
+  margin: 1em 0;
+  width: 80%;
+}
+
+.csn-inp:focus {
+  outline: none;
+}
+
+h1, h2, h3, h4, h5{
+  color: #4B5267;
+  font-weight: 400;
+  /*color: #302b2b;*/
+}
+
+.light-tnt {
+  background-color: rgba(0,0,0,0.12);
+}

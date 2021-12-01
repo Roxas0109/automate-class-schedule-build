@@ -1,0 +1,30 @@
+.semester-container {
+  width: 90%;
+  margin: auto;
+}
+
+.semester-drop {
+  background-color: #D22030;
+  color: white;
+  padding: 0.8em 1em;
+  box-sizing: border-box;
+  margin: 0.4em 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.semester-drop h4 {
+  color: inherit;
+  margin: 0;
+}
+
+
+.semester-courses-container {
+  background-color: rgba(0,0,0,0.06);
+}
+
+.semester-course h4{
+  margin: 0;
+  padding: 0.8em 2em;
+}
