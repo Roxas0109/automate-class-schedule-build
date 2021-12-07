@@ -1,27 +1,33 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import './History.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export default function History() {
-
-    const semesterData = {
-      "Fall 2019": ["COMP 110", "COMP 110L", "PHYS 220A", "PHYS 220AL"],
-      "Spring 2020": ["COMP 310", "COMP 322", "COMP 322L", "MATH 482"],
-      "Fall 2020": ["COMP 256", "COMP 256L", "COMP 333", "COMS 356", "JAPN 101", "PHIL 330"]
-    };
+export default function History(props) {
+    const semesterData = {};
+    const semesterNames = {"FA": "Fall", "SP": "Spring", "SU": "Summer"}
 
     const [expandedData, setExpandedData] = useState([]);
 
     const toggleData = useCallback((semester) => {
       var copy = [...expandedData];
+      console.log(copy);
       if(copy.indexOf(semester) != -1){
         copy.splice(copy.indexOf(semester), 1);
       }else{
         copy.push(semester);
       }
+      console.log(copy);
       setExpandedData(copy);
     });
     console.log(expandedData);
+
+    const addSemesterData = () =>{
+       for(let [key, value] of Object.entries(props.history).sort()){
+         let modifyKey = semesterNames[key.substring(2,4)] + " 20" + key.substring(0,2)
+        semesterData[modifyKey] = Object.keys(value);
+       }
+      }
+      addSemesterData();
 
     const listItems = Object.keys(semesterData).map((semester) => {
       return (
@@ -42,6 +48,8 @@ export default function History() {
         </div>
       );
     });
+
+
     return (
         <div className="home-comp">
           <center><h3>Past Semesters</h3></center>

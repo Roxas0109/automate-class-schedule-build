@@ -1,22 +1,41 @@
-import React from 'react'
 import './HomePage.css'
 import History from './History';
 import Scheduler from './Scheduler';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router';
+import React, { useState, useEffect } from 'react';
+import HomePageUtils from "../../api/HomePageUtils"
 
 export default function HomePage() {
 
-  //Grab data from the server
-  //Pass the data as props
+    const { state } = useLocation();
+    const [studentData, setStudentData] = useState();
+
+
+    const fileFormData = new FormData();
+    fileFormData.append('files', state.files[Object.keys(state.files)[0]])
+
+    useEffect(() => {
+        HomePageUtils.postAndCallback("/api/import",fileFormData, (data) =>{
+            if(data.status === "success")
+                setStudentData(data)
+        });
+    }, []);
+
     return (
         <div>
-            <center><h1>Term: Spring 2022</h1></center>
-            <History/>
-            <Scheduler/>
+            {studentData &&
+                <div>
+                    <center><h1>Term: Spring 2022</h1></center>
+                    <History history = {studentData.semester}/>
+                    <Scheduler suggestion={studentData.data} />
+                </div>
+            }      
         </div>
     )
+
+
+    //Grab data from the server
+    //Pass the data as props
 }
 
 

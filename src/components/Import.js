@@ -17,7 +17,7 @@ export default function Import() {
                 dispatch(setLoader(true))
                 setTimeout(() => { // Set timout for example purpose.
                     dispatch(setLoader(false))
-                    navigate('/content/home')
+                    navigate('/content/home', {state: {files: e.target.files}})
                 }, 2000)
             }}><FontAwesomeIcon icon="upload"/>Import</button>
         )

@@ -9,7 +9,6 @@
   align-items: center;
 }
 
-
 .tooltip .csn-btn-icon {
   margin: 0 4px;
 }
@@ -23,4 +22,16 @@
   border-style: solid;
   border-width: 1px;
   border-color: rgba(0,0,0,0.2);
+}
+.scheduler-center{
+  display: flex;
+  justify-content: center;
+}
+
+.scheduler-unit-grey{
+  color: #4B5267;
+}
+
+.scheduler-unit-red{
+  color: red;
 }
