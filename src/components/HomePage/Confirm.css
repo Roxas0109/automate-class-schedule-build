@@ -1,0 +1,16 @@
+.no-pop {
+    display: none;
+}
+
+.popup {
+    position: relative;
+    /* z-index: 1; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-cont {
+    background-color: red;
+    position: absolute;
+}

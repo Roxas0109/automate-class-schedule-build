@@ -6,6 +6,7 @@ import { Outlet } from 'react-router-dom';
 import LoadingOverlay from 'react-loading-overlay';
 import { useSelector } from 'react-redux';
 import { overlaySelector } from '../features/overlay/OverlaySlice';
+import Confirm from './HomePage/Confirm';
 
 
 export default function Content() {
@@ -15,17 +16,18 @@ export default function Content() {
     return (
         <div className="contentContext">
             <LoadingOverlay
-            active={overlay}
-            styles={{
-                wrapper: {},
-            }}
-            spinner
-            text='Analyzing...'>
-                <NavigationBar />
-                <img alt="ECS logo" src={logo} className="ECSlogo" />
-                <div className="page-content">
-                    <Outlet />
-                </div>
+                active={overlay}
+                styles={{
+                    wrapper: {},
+                }}
+                spinner
+                text='Analyzing...'>
+                    <NavigationBar />
+                    <img alt="ECS logo" src={logo} className="ECSlogo" />
+                    <div className="page-content">
+                        <Confirm/>
+                        <Outlet />
+                    </div>
             </LoadingOverlay>
         </div>
     )

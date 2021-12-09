@@ -2,8 +2,11 @@ import React, { useState, useCallback, useEffect, useRef } from 'react';
 import './Scheduler.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SearchBar from './SearchBar';
+import { useDispatch } from 'react-redux';
+import { setPop } from '../../features/popup/PopupSlice'
 
 export default function Scheduler(props) {
+  const dispatch = useDispatch()
 
   const [projectedClasses, setProjectedClasses] = useState([]);
 
@@ -122,7 +125,7 @@ export default function Scheduler(props) {
         <hr />
         {listItems}
         <div className="scheduler-center">
-          {Object.keys(projectedClasses).length > 0 && <button className="csn-btn" onClick={() => { console.log("1") }}> Submit </button>}
+          {Object.keys(projectedClasses).length > 0 && <button className="csn-btn" onClick={() => dispatch(setPop(true))}> Submit </button>}
         </div>
         <SearchBar majorData = {props.suggestion.majorData} addRecommended = {addRecommended}/>
         <center><h4 className="scheduler-subtitle">Recommended Classes</h4></center>

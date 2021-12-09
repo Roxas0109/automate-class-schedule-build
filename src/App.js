@@ -3,7 +3,6 @@ import './App.css';
 import Login from './components/Login';
 import Import from './components/Import';
 import Submitted from './components/Submitted';
-import AddCourses from './components/AddCourses'
 import HomePage from './components/HomePage/HomePage';
 import logo from './ECSlogo.jpg';
 import {
@@ -36,7 +35,6 @@ function App() {
             <Route index element={<Term />} />
             <Route path="import" element={<Import />} />
             <Route path="home" element={<HomePage />} />
-            <Route path="add" element={<AddCourses />} />
             <Route path="submit" element={<Submitted />} />
 
           </Route>
