@@ -16,8 +16,12 @@ export default function HomePage() {
 
     useEffect(() => {
         HomePageUtils.postAndCallback("/api/import",fileFormData, (data) =>{
-            if(data.status === "success")
+            if(data.status === "success"){
+                console.log(data);
                 setStudentData(data)
+            }
+            else
+                alert("Not working");
         });
     }, []);
 
@@ -27,7 +31,7 @@ export default function HomePage() {
                 <div>
                     <center><h1>Term: Spring 2022</h1></center>
                     <History history = {studentData.semester}/>
-                    <Scheduler suggestion={studentData.data} />
+                    <Scheduler suggestion={studentData.data}/>
                 </div>
             }      
         </div>
