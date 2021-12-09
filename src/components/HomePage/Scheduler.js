@@ -125,7 +125,7 @@ export default function Scheduler(props) {
         <hr />
         {listItems}
         <div className="scheduler-center">
-          {Object.keys(projectedClasses).length > 0 && <button className="csn-btn" onClick={() => dispatch(setPop(true))}> Submit </button>}
+          {Object.keys(projectedClasses).length > 0 && <button className="csn-btn" onClick={props.toggleConfirm}> Submit </button>}
         </div>
         <SearchBar majorData = {props.suggestion.majorData} addRecommended = {addRecommended}/>
         <center><h4 className="scheduler-subtitle">Recommended Classes</h4></center>

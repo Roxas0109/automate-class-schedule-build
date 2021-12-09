@@ -10,6 +10,8 @@ export default function HomePage() {
     const { state } = useLocation();
     const [studentData, setStudentData] = useState();
 
+    const [shouldConfirm, setShouldConfirm] = useState(false);
+
 
     const fileFormData = new FormData();
     fileFormData.append('files', state.files[Object.keys(state.files)[0]])
@@ -25,15 +27,33 @@ export default function HomePage() {
         });
     }, []);
 
+    const confirmSubmit = function(){
+
+    }
+
     return (
+
+
         <div>
+          {
+            shouldConfirm &&
+            <div>
+                <div className="popup-comp">
+                    <p>Are you sure?</p>
+                    <div>
+                      <button className="cancel-btn" onClick={() => {setShouldConfirm(false)}}>Cancel</button>
+                      <button onClick={() => {alert("Nice.")}}>Submit</button>
+                    </div>
+                </div>
+            </div>
+          }
             {studentData &&
                 <div>
                     <center><h1>Term: Spring 2022</h1></center>
                     <History history = {studentData.semester}/>
-                    <Scheduler suggestion={studentData.data}/>
+                    <Scheduler toggleConfirm={() => {setShouldConfirm(true)}} suggestion={studentData.data}/>
                 </div>
-            }      
+            }
         </div>
     )
 

@@ -9,3 +9,38 @@
     width: 100%;
   }
 }
+
+.popup-comp {
+  width: 240px;
+  height: 120px;
+  position: absolute;
+  top: calc(50% - 60px);
+  left: calc(50% - 120px);
+  background-color: #F2F2F2;
+  border: 1px solid #D22030;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 30%);
+}
+
+.popup-comp p {
+  display: block;
+  color: #4B5267;
+}
+
+.popup-comp .cancel-btn {
+  background-color: rgba(0,0,0,0.2);
+}
+
+.popup-comp button {
+  background-color: #D22030;
+  border: none;
+  color: white;
+  padding: 0.4em 0.8em;
+  margin: 0.5em;
+  border-radius: 8px;
+  cursor: pointer;
+}
