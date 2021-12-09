@@ -92,6 +92,15 @@ export default function Scheduler(props) {
     );
   });
 
+  /*
+
+  addClass() => Throw that class onto the projected classes state ^
+
+  Pass the WHOLE course list into searchbar as a prop
+
+
+
+  */
   useEffect(() => {
     flatStudentRecommendedClasses();
   }, []);

@@ -1,4 +1,4 @@
-const API_DOMAIN = "http://localhost:3012";//Dev purposes
+const API_DOMAIN = "http://localhost:80";//Dev purposes
 
 
 function postAndCallback(url, body, callback){
