@@ -60,6 +60,8 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   cursor: pointer;
+  margin-bottom: 5px;
+
 }
 
 .csn-btn-icon {
