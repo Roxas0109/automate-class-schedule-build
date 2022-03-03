@@ -65,26 +65,24 @@ export default function DeptHome() {
 
         <div className="tableContainer">
             <div className="wrapper">
-                <div className="allocationsTable"></div>
                 {createTable()}
                 <ReactPaginate
-                    previousLabel={'<'}
-                    nextLabel={'>'}
+                    previousLabel={'< Previous'}
+                    nextLabel={'Next >'}
                     pageCount={pageCount}
                     pageRangeDisplayed={3}
-                    marginPagesDisplayed={4}
+                    marginPagesDisplayed={1}
                     onPageChange={changePage}
-                    containerClassName={'paginationBtns'}
-                    pageLinkClassName={'csn-btn'}
-                    previousClassName={'prevBtn'}
-                    nextLinkClassName={'nextBtn'}
-                    disabledClassName={'pagDisabled'}
-                    activeClassName={'pagActive'}
+                    containerClassName={'paginationBtnsCont'}
+                    pageLinkClassName={'paginationBtns'}
+                    previousLinkClassName={'pnBtns'}
+                    nextLinkClassName={'pnBtns'}
+                    activeLinkClassName={'pagActive'}
+                    breakLinkClassName={'dots'}
                 />
                 <button type="submit" className="csn-btn" onclick="myFunction()" >
                     <FontAwesomeIcon icon="redo" />
                     Generate Allocation</button>
-                <div class="divider" />
                 <button type="submit" className="csn-btn">
                     <FontAwesomeIcon icon="file-excel" />
                     Export to .xlsx</button>

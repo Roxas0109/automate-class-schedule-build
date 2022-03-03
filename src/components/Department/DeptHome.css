@@ -25,40 +25,55 @@ th {
     height: 70px;
 }
 
-.divider{
-    width:5px;
-    height:auto;
-    display:inline-block;
-    margin-bottom: 10px;
-}
-
-.paginationBtns{
-    width: 80%;
-    height: 40px;
+.paginationBtnsCont{
+    /* width: auto; */
+    height: 50px;
     list-style: none;
     display: flex;
     justify-content: center;
     user-select: none;
-    border-radius: 500px;
-    overflow: auto;
+    align-items: safe center;
 }
 
-.paginationBtns a {
-    padding: 10px;
-    margin: 8px;
+.paginationBtns {
+    border-radius: 8px;
+    background-color: gray;
+    color: white;
+    font-size: 16px;
+    border: none;
+    margin: 6px;
+    padding: 7px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.pagActive{
+    background-color: #D22030;
+    color: white;
+}
+
+.paginationBtns:hover{
+    transition: background-color 0.27s;
+    background-color: #911620;
+}
+
+.dots{
+    color: gray;
+    font-size: 16px;
+    margin: 6px;
+    font-weight: 500;
     cursor: pointer;
 }
 
-.paginationBtns a:hover{
-    color:#D22030;
-}
-
-/* .pagActive{
-    color:white;
+.pnBtns{
+    border-radius: 8px;
     background-color: #D22030;
-} */
-
-.pagDisabled{
-    color: black;
-    background-color: white;
+    color: white;
+    font-size: 16px;
+    border: none;
+    margin: 6px;
+    padding: 4px;
+    font-weight: 500;
+    cursor: pointer;
 }
