@@ -2,21 +2,19 @@ import './DeptHome.css'
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ReactPaginate from 'react-paginate'
+import JSONdata from './MOCK_DATA.json'
 
 export default function DeptHome() {
-    const JSONTest = [{ class: "COMP1", allocation: "357" }, { class: "COMP2", allocation: "357" },
-    { class: "COMP3", allocation: "357" }, { class: "COMP4", allocation: "357" }, { class: "COMP5", allocation: "357" },
-    { class: "COMP6", allocation: "357" }, { class: "COMP7", allocation: "357" }]
 
     const [courses, setCourses] = useState([])
 
     useEffect(() => {
-        setCourses(JSONTest)
+        setCourses(JSONdata)
     }, [])
 
     const [pageNumber, setPageNumber] = useState(0)
 
-    const numPerPage = 2
+    const numPerPage = 10
     const pagesVisited = pageNumber * numPerPage
 
     const pageCount = Math.ceil(courses.length / numPerPage)
@@ -70,11 +68,14 @@ export default function DeptHome() {
                 <div className="allocationsTable"></div>
                 {createTable()}
                 <ReactPaginate
-                    previousLabel={'Previous'}
-                    nextLabel={'Next'}
+                    previousLabel={'<'}
+                    nextLabel={'>'}
                     pageCount={pageCount}
+                    pageRangeDisplayed={3}
+                    marginPagesDisplayed={4}
                     onPageChange={changePage}
                     containerClassName={'paginationBtns'}
+                    pageLinkClassName={'csn-btn'}
                     previousClassName={'prevBtn'}
                     nextLinkClassName={'nextBtn'}
                     disabledClassName={'pagDisabled'}

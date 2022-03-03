@@ -31,3 +31,34 @@ th {
     display:inline-block;
     margin-bottom: 10px;
 }
+
+.paginationBtns{
+    width: 80%;
+    height: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+    border-radius: 500px;
+    overflow: auto;
+}
+
+.paginationBtns a {
+    padding: 10px;
+    margin: 8px;
+    cursor: pointer;
+}
+
+.paginationBtns a:hover{
+    color:#D22030;
+}
+
+/* .pagActive{
+    color:white;
+    background-color: #D22030;
+} */
+
+.pagDisabled{
+    color: black;
+    background-color: white;
+}

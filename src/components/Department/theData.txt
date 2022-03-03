@@ -1,4 +1,0 @@
-singleCourse = {
-    "course": 'COMP123',
-    "allocations": 150
-}
