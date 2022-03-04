@@ -4,13 +4,23 @@
     margin-top: 5%;
     background: rgba(0,0,0,0.05);
     border-radius: 25px;
-    width: 80%;
+    width: 100%;
     max-width: 600px;
     padding: 4em;
     font-family: 'Open Sans', sans-serif;
     box-shadow: 0 10px 30px rgb(0 0 0 / 30%);
     border: 1px solid #D22030;
     text-align: center;
+}
+
+.tableContainer .csn-btn {
+  margin: 4px;
+}
+
+@media only screen and (max-width: 600px) {
+  .tableContainer {
+    padding: 1em;
+  }
 }
 
 table, td {
@@ -33,6 +43,7 @@ th {
     justify-content: center;
     user-select: none;
     align-items: safe center;
+    padding: 0;
 }
 
 .paginationBtns {
