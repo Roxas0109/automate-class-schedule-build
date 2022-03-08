@@ -7,6 +7,7 @@ import JSONdata from './MOCK_DATA.json'
 export default function DeptHome() {
 
     const [courses, setCourses] = useState([])
+    const XLSX = require('xlsx')
 
     useEffect(() => {
         setCourses(JSONdata)
@@ -33,6 +34,18 @@ export default function DeptHome() {
                 </tr>
             )
         })
+    
+    const convertJsonToExcel=()=>{
+        const workSheet = XLSX.utils.json_to_sheet(courses)
+        const workBook = XLSX.utils.book_new()
+        XLSX.utils.book_append_sheet(workBook,workSheet,"lass Allocation")
+        
+        XLSX.write(workBook,{bookType:'xlsx', type:'buffer'})
+
+        XLSX.write(workBook,{bookType:'xlsx',type:'binary'})
+
+        XLSX.writeFile(workBook,'ClassAllocation.xlsx')
+    }
 
     const changePage = ({ selected }) => {
         setPageNumber(selected)
@@ -80,10 +93,10 @@ export default function DeptHome() {
                     activeLinkClassName={'pagActive'}
                     breakLinkClassName={'dots'}
                 />
-                <button type="submit" className="csn-btn" onclick="myFunction()" >
+                <button type="submit" className="csn-btn">
                     <FontAwesomeIcon icon="redo" />
                     Generate Allocation</button>
-                <button type="submit" className="csn-btn">
+                <button type="submit" className="csn-btn" onClick={convertJsonToExcel}>
                     <FontAwesomeIcon icon="file-excel" />
                     Export to .xlsx</button>
             </div>
