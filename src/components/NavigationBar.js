@@ -63,7 +63,7 @@ export default function NavigationBar() {
                 <h1 className="title-name"> Projected Schedule Planner</h1>
                 <div className='button-contaniner'>
                     {role === "admin" &&
-                        <button type='submit' className="navButton" onClick={()=> navigate("/admin")}>Department</button>
+                        <button type='submit' className="navButton" onClick={()=> navigate("content/admin")}>Department</button>
                     }
 
                     <button type='submit' className="sign-out navButton" onClick={handleLogout}><FontAwesomeIcon icon="sign-out-alt"/> Sign Out</button>

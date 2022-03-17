@@ -36,7 +36,7 @@ function App() {
               <Route path="import" element={<Import />} />
               <Route path="home" element={<HomePage />} />
               <Route path="submit" element={<Submitted />} />
-              <Route path="admin" element={<Department/>} />
+              <Route path="admin" element={<DeptHome/>} />
             </Route>
 
           </Routes>
