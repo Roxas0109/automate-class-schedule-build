@@ -14,8 +14,6 @@ export default function Scheduler(props) {
 
   const [unit, setUnit] = useState(0);
 
-  const ref = useRef();
-
   const getMajorAberrations = (getSpeficCourseAberrations) => {
     for (var l in props.suggestion.majorData) {
       if (getSpeficCourseAberrations == props.suggestion.majorData[l].aberrations)
@@ -46,17 +44,29 @@ export default function Scheduler(props) {
     setUnit(unit + getSpeficCourse(adding).units);
   });
 
+  const [tempHoldOfRequirementsCourses, setTempHoldOfRequirementsCourses] = useState([])
+
   const removeClass = useCallback((toRemove) => {
     console.log("Removing" + toRemove);
     let projectedClassesCopy = { ...projectedClasses };
     let moveToRecommendedClasses = projectedClasses[toRemove]
     delete projectedClassesCopy[toRemove];
     setProjectedClasses(projectedClassesCopy)
+
+    if(moveToRecommendedClasses = "General ED (Unit 3)"){
+      setUnit(unit - 3);
+      return;
+    }
+    else{
+      setUnit(unit - getSpeficCourse(moveToRecommendedClasses).units);
+    }
+
+    if (tempHoldOfRequirementsCourses.indexOf(moveToRecommendedClasses) == -1)
+      return;
+
     var recommendedClassesCopy = { ...recommendedClasses };
     recommendedClassesCopy[toRemove] = moveToRecommendedClasses;
     setRecommendedClasses(recommendedClassesCopy)
-    console.log(getSpeficCourse(moveToRecommendedClasses).units + " sadas");
-    setUnit(unit - getSpeficCourse(moveToRecommendedClasses).units); // When passed unit count?
   });
 
   const flatStudentRecommendedClasses = () => {
@@ -64,10 +74,9 @@ export default function Scheduler(props) {
     for (var requirements of Object.keys(props.suggestion.remainingRequirements)) {
       tempConcatClasses = tempConcatClasses.concat(props.suggestion.remainingRequirements[requirements])
     }
-    setRecommendedClasses(tempConcatClasses)
+    setRecommendedClasses(tempConcatClasses);
+    setTempHoldOfRequirementsCourses(tempConcatClasses);
   }
-
-  const [classSearch, setClassSearch] = useState('');
 
   const listItems = Object.keys(projectedClasses).map((name) => {
     return (
@@ -92,38 +101,35 @@ export default function Scheduler(props) {
     );
   });
 
-  /*
+  const addClass = ((courseName) => {
+    var ifCourseInRecommendedClasses = -1
+    for (const [key, value] of Object.entries(recommendedClasses)) {
+      if (value == courseName) {
+        ifCourseInRecommendedClasses = key;
+        break;
+      }
+    }
 
-  addClass() => Throw that class onto the projected classes state ^
+    if (ifCourseInRecommendedClasses != -1) {
+      addRecommended(ifCourseInRecommendedClasses)
+    } else {
+      var projectedClassesCopy = { ...projectedClasses };
+      console.log(Object.keys(projectedClassesCopy).length);
+      projectedClassesCopy[Object.keys(projectedClassesCopy).length] = courseName
+      setProjectedClasses(projectedClassesCopy)
 
-  Pass the WHOLE course list into searchbar as a prop
+      if (courseName == "General ED (Unit 3)") {
+        setUnit(unit + 3)
+      }
+      else {
+        setUnit(unit + getSpeficCourse(courseName).units)
+      }
+    }
+  });
 
-
-
-  */
   useEffect(() => {
     flatStudentRecommendedClasses();
   }, []);
-
-  const [filterCourseObjects, setFilterCourseObjects] = useState([])
-
-
-  // const listSearchIteams = (target) => {
-
-  //   var lol = [];
-
-  //   Object.keys(props.suggestion.majorData).forEach(major => {
-  //     props.suggestion.majorData[major].courses.filter(course => {
-  //       if (course.name.toLowerCase().includes(target.toLowerCase())) {
-  //         lol = [...lol, course.name]
-  //       }
-  //     })
-  //   })
-  //   if (target == "")
-  //     setFilterCourseObjects([])
-  //   else
-  //     setFilterCourseObjects(lol);
-  // }
 
   return (
     <div className="home-comp">
@@ -136,7 +142,7 @@ export default function Scheduler(props) {
         <div className="scheduler-center">
           {Object.keys(projectedClasses).length > 0 && <button className="csn-btn" onClick={props.toggleConfirm}> Submit </button>}
         </div>
-        <SearchBar majorData = {props.suggestion.majorData} addRecommended = {addRecommended}/>
+        <SearchBar majorData={props.suggestion.majorData} addClass={addClass} />
         <center><h4 className="scheduler-subtitle">Recommended Classes</h4></center>
         <hr />
         <div className="semester-container">

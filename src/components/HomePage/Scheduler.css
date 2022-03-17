@@ -40,9 +40,10 @@
   position: relative;
 }
 
-.semester-courses-container {
+.search-courses-container {
   background-color: #F0F0F0;
   position: absolute;
-  width: 100%;
+  width: 80%;
+  margin-left: 10%;
   box-shadow: 0 10px 30px rgb(0 0 0 / 30%);
 }
