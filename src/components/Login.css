@@ -12,3 +12,8 @@
     border: 1px solid #D22030;
     text-align: center;
 }
+
+.inputError {
+    border: 1px solid red;
+    background: #ffcccb;
+}

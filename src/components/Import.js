@@ -1,5 +1,5 @@
 import './Import.css'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setLoader } from '../features/overlay/OverlaySlice'
 import { useNavigate } from 'react-router-dom'
@@ -23,6 +23,7 @@ export default function Import() {
         )
     }
 
+
     return (
         <div className="importContainer">
             <div className="importWrapper">
@@ -30,6 +31,8 @@ export default function Import() {
                 <input className="redBtn" type='file' accept='application/pdf' onChange={handleChange}></input>
                 <br/>
                 {showBtn}
+                <br/>
+                <button className="redBtn">Open Previous Save</button>
             </div>
         </div>
     )

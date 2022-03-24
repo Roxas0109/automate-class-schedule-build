@@ -20,10 +20,18 @@ nav{
     user-select: none;
 }
 
-nav > button{
+.button-contaniner{
+   display: flex;
+   height: 100%;
+   align-items: center;
+   padding: 0 10px;
+}
+
+.navButton{
     display: flex;
+    margin-right: 10px;
     align-items: center;
-    padding: 0 15px;
+    /* padding: 0 15px; */
     font-size: large;
     color: white;
     background-color: transparent;

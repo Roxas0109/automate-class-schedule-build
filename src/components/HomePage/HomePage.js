@@ -18,6 +18,7 @@ export default function HomePage() {
 
     useEffect(() => {
         HomePageUtils.postAndCallback("/api/import",fileFormData, (data) =>{
+            console.log(data);
             if(data.status === "success"){
                 console.log(data);
                 setStudentData(data)
@@ -32,8 +33,6 @@ export default function HomePage() {
     }
 
     return (
-
-
         <div>
           {
             shouldConfirm &&
