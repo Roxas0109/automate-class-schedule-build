@@ -19,7 +19,7 @@ export default function Import() {
                     dispatch(setLoader(false))
                     navigate('/content/home', {state: {files: e.target.files}})
                 }, 2000)
-            }}><FontAwesomeIcon icon="upload"/>Import</button>
+            }}>Analyze</button>
         )
     }
 
@@ -28,11 +28,12 @@ export default function Import() {
         <div className="importContainer">
             <div className="importWrapper">
                 <h1>Import Degree Progress Report (DPR)</h1>
-                <input className="redBtn" type='file' accept='application/pdf' onChange={handleChange}></input>
+                <input className="import" type='file' accept='application/pdf' id='imp' onChange={handleChange}></input>
+                <label for='imp' className='redBtn'><FontAwesomeIcon className='ic' icon="upload"/>Import</label>
                 <br/>
                 {showBtn}
                 <br/>
-                <button className="redBtn">Open Previous Save</button>
+                <button className="redBtn">Load previous DPR</button>
             </div>
         </div>
     )
