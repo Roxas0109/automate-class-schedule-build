@@ -145,7 +145,7 @@ export default function Scheduler(props) {
         <SearchBar majorData={props.suggestion.majorData} addClass={addClass} />
         <center><h4 className="scheduler-subtitle">Recommended Classes</h4></center>
         <hr />
-        <div className="semester-container">
+        <div className="rec-container">
           {recommendedItems}
         </div>
       </div>
