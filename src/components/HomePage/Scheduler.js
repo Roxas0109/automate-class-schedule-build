@@ -3,7 +3,6 @@ import './Scheduler.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SearchBar from './SearchBar';
 import { useDispatch } from 'react-redux';
-import { setPop } from '../../features/popup/PopupSlice'
 
 export default function Scheduler(props) {
   const dispatch = useDispatch()

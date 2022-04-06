@@ -1,22 +1,22 @@
 import './Import.css'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { setLoader } from '../features/overlay/OverlaySlice'
+// import { setLoader } from '../features/overlay/OverlaySlice'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function Import() {
 
     const [showBtn, setShowBtn] = useState(null)
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const handleChange = (e) =>{
         setShowBtn(
             <button className="redBtn" onClick={()=>{
-                dispatch(setLoader(true))
+                // dispatch(setLoader(true))
                 setTimeout(() => { // Set timout for example purpose.
-                    dispatch(setLoader(false))
+                    // dispatch(setLoader(false))
                     navigate('/content/home', {state: {files: e.target.files}})
                 }, 2000)
             }}>Analyze</button>

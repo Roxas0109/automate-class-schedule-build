@@ -1,10 +1,10 @@
 import './Login.css'
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import HomePageUtils from "./../api/HomePageUtils";
-import {decode} from 'jsonwebtoken'
+import { connect } from 'react-redux';
+import { LoginAuthAction } from '../app/actions/AuthAction';
+import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
+function Login(props) {
     const [username, setUserName] = useState('');
     const [userError, setUserError] = useState(false);
     const [password, setPassword] = useState('');
@@ -13,71 +13,76 @@ export default function Login() {
 
     const navigate = useNavigate();
 
+    const {login} = props 
+
      const handleSubmit = (e) => {
+        login({user: username, password: password}, navigate);
+     }
 
-        if(username.length == 0 || password.length == 0){
+    //  const handleSubmit = (e) => {
 
-            if(username.length == 0)
-                setUserError(true);
+    //     if(username.length == 0 || password.length == 0){
 
-            if(password.length == 0){ 
-                setPasswordError(true);
-            }
+    //         if(username.length == 0)
+    //             setUserError(true);
 
-            setError("Username or Password is empty!!");
-            return;
-        }
+    //         if(password.length == 0){ 
+    //             setPasswordError(true);
+    //         }
 
-        let body = {
-            user: username,
-            password: password
-        };
+    //         setError("Username or Password is empty!!");
+    //         return;
+    //     }
 
-        HomePageUtils.postAndCallback("/api/login", JSON.stringify(body), (data) => {
-            if (data.status === "success") {
-                localStorage.setItem("token", JSON.stringify(data));
+    //     let body = {
+    //         user: username,
+    //         password: password
+    //     };
 
-                if(getRole())
-                    navigate("/content/admin");
-                else
-                    navigate("/content");
-            }
-            else {
-                setError(data.error);
+    //     HomePageUtils.postAndCallback("/api/login", JSON.stringify(body), (data) => {
+    //         if (data.status === "success") {
+    //             localStorage.setItem("token", JSON.stringify(data));
 
-            }
-        }, { "Content-Type": "application/json" });
-    }
+    //             if(getRole())
+    //                 navigate("/content/admin");
+    //             else
+    //                 navigate("/content");
+    //         }
+    //         else {
+    //             setError(data.error);
 
-    const getRole = () => {
-        let tempRole = tokenPayload();
+    //         }
+    //     }, { "Content-Type": "application/json" });
+    // }
+
+    // const getRole = () => {
+    //     let tempRole = tokenPayload();
               
-        if(tempRole ==  null){
-            return;
-        }
+    //     if(tempRole ==  null){
+    //         return;
+    //     }
 
-        if(tempRole.role == "admin"){
-           return true
-        }
-        else return false
+    //     if(tempRole.role == "admin"){
+    //        return true
+    //     }
+    //     else return false
 
 
-    };
+    // };
 
-    const tokenPayload = () =>{
-        let object = (localStorage.getItem('token'));
+    // const tokenPayload = () =>{
+    //     let object = (localStorage.getItem('token'));
 
-        if(!object){
-            return null;
-        }
+    //     if(!object){
+    //         return null;
+    //     }
 
-        object = JSON.parse(object)
+    //     object = JSON.parse(object)
 
-        if(object['token']){
-            return decode(object['token']);
-        }
-    }
-
+    //     if(object['token']){
+    //         return decode(object['token']);
+    //     }
+    // }
 
     return (
         <div className="loginContainer">
@@ -88,8 +93,6 @@ export default function Login() {
                     name="username"
                     required
                     onChange={(e) => {
-                        setError('');
-                        setUserError(false);
                         setUserName(e.target.value);
                     }}
                     placeholder="Username..." />
@@ -98,16 +101,26 @@ export default function Login() {
                     name="password"
                     required
                     onChange={(e) => {
-                        setError('');
-                        setPasswordError(false)
                         setPassword(e.target.value);
                     }}
                     placeholder="Password..." />
                 <br />
                 <br />
-                {error.length > 0 && <span>{error}<br/><br/></span>}
-                <button type="submit" className="csn-btn" onClick={handleSubmit}>Submit</button>
+                 {error.length > 0 && <span>{error}<br/><br/></span>}
+                 <div>
+                    <button type="submit" className="csn-btn" onClick={handleSubmit}>Submit</button>
+                </div>
             </div>
         </div>
     )
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        login: (loginState, navigate) => {
+            dispatch(LoginAuthAction(loginState, navigate));
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Login);

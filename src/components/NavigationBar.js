@@ -4,22 +4,18 @@ import { useAuth } from '../api/auth';
 import HomePageUtils from '../api/HomePageUtils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './NavigationBar.css';
+import { connect } from 'react-redux';
+import { LogoutAuthAction } from '../app/actions/AuthAction';
 
 
-export default function NavigationBar() {
+function NavigationBar(props) {
     const [role, setRole] = useState('');
-    const navigate = useNavigate();
+
+    const {auth, logout} = props;
 
     const handleLogout = (e) => {
-        fetch("http://localhost:80/api/logout", { method: "POST", credentials: 'include' }).then((res) => {
-            localStorage.clear();
-            navigate('/')
-        }).catch((err) =>
-            console.error(err)
-        );
-
+        logout();
     }
-
     return (
         <div className='nav-container'>
             <nav>
@@ -29,5 +25,21 @@ export default function NavigationBar() {
                 </div>
             </nav>
         </div>
-    )
+    );
 }
+
+const mapStateToProps = (state) => {
+    return {
+        auth: state
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout: () => {
+            dispatch(LogoutAuthAction()); 
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar);
