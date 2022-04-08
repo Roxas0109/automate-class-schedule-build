@@ -15,12 +15,15 @@ export default function Scheduler(props) {
   const [unit, setUnit] = useState(0);
 
   const sendClass = (className) => {
-    let pName = recommendedClasses[className]
+    let courseName = recommendedClasses[className]
+    let passedName = className
+
     let body = {
-      pClass: pName
+      courseName: courseName,
+      passedName: passedName
     }
-    HomePageUtils.postAndCallback("/api/projectedClass", JSON.stringify(body), (data) => {
-      if(data.success) addRecommended(className)
+    HomePageUtils.postAndCallback("/api/checkClass", JSON.stringify(body), (data) => {
+      if (data.success) addRecommended(className)
     }, { "Content-Type": "application/json" });
   }
 
@@ -105,7 +108,7 @@ export default function Scheduler(props) {
       <div className="course-container">
         <h4>{recommendedClasses[name]}</h4>
         <div className="tooltip">
-          <button className='csn-btn-icon' onClick={() => { sendClass(name)}}><FontAwesomeIcon icon="plus" /></button>
+          <button className='csn-btn-icon' onClick={() => { sendClass(name) }}><FontAwesomeIcon icon="plus" /></button>
         </div>
       </div>
     );
@@ -139,6 +142,16 @@ export default function Scheduler(props) {
 
   useEffect(() => {
     flatStudentRecommendedClasses();
+    //figure out
+    let id = 123456
+    HomePageUtils.postAndCallback("/api/checkClass", JSON.stringify({ID:id}), (data) => {
+      if (data.success){
+        console.log(data)
+        console.log(data.passedName) 
+        addRecommended(data.passedName)
+      }
+    }, { "Content-Type": "application/json" });
+
   }, []);
 
   return (
