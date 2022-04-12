@@ -1,60 +1,35 @@
 import './Login.css'
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import { LoginAuthAction } from '../app/actions/AuthAction';
+import { LoginAuthAction, ClearErrorAction } from '../app/actions/AuthAction';
 import { useNavigate } from 'react-router-dom';
 
 function Login(props) {
     const [username, setUserName] = useState('');
-    const [userError, setUserError] = useState(false);
     const [password, setPassword] = useState('');
-    const [passwordError, setPasswordError] = useState(false);
-    const [error, setError ] = useState('');
 
     const navigate = useNavigate();
 
-    const {login} = props 
+    const {login, auth, error, clearError} = props 
 
      const handleSubmit = (e) => {
-        login({user: username, password: password}, navigate);
+        if(error.hasError){
+            clearError();
+        }
+
+        login({user: username, password: password}, navigate)
+        
+        
+        // if(auth.user.role != null){
+        //     console.log(auth.user.role);
+        //     if(auth.user.role == "admin"){
+        //         navigate("/content/admin")
+        //     }
+        //     else{
+        //         navigate("/content")
+        //     }
+        // }
      }
-
-    //  const handleSubmit = (e) => {
-
-    //     if(username.length == 0 || password.length == 0){
-
-    //         if(username.length == 0)
-    //             setUserError(true);
-
-    //         if(password.length == 0){ 
-    //             setPasswordError(true);
-    //         }
-
-    //         setError("Username or Password is empty!!");
-    //         return;
-    //     }
-
-    //     let body = {
-    //         user: username,
-    //         password: password
-    //     };
-
-    //     HomePageUtils.postAndCallback("/api/login", JSON.stringify(body), (data) => {
-    //         if (data.status === "success") {
-    //             localStorage.setItem("token", JSON.stringify(data));
-
-    //             if(getRole())
-    //                 navigate("/content/admin");
-    //             else
-    //                 navigate("/content");
-    //         }
-    //         else {
-    //             setError(data.error);
-
-    //         }
-    //     }, { "Content-Type": "application/json" });
-    // }
-
     // const getRole = () => {
     //     let tempRole = tokenPayload();
               
@@ -89,7 +64,7 @@ function Login(props) {
             <div className="wrapper">
                 <h1 className="grab">Log In</h1>
                 <br />
-                <input type="text" className= {userError? 'csn-inp csn-expand inputError': "csn-inp csn-expand"}
+                <input type="text" className= {error.hasError? 'csn-inp csn-expand inputError': "csn-inp csn-expand"}
                     name="username"
                     required
                     onChange={(e) => {
@@ -97,7 +72,7 @@ function Login(props) {
                     }}
                     placeholder="Username..." />
                 <br />
-                <input type="password" className= {passwordError? 'csn-inp csn-expand inputError' : "csn-inp csn-expand"}
+                <input type="password" className= {error.hasError? 'csn-inp csn-expand inputError' : "csn-inp csn-expand"}
                     name="password"
                     required
                     onChange={(e) => {
@@ -106,7 +81,7 @@ function Login(props) {
                     placeholder="Password..." />
                 <br />
                 <br />
-                 {error.length > 0 && <span>{error}<br/><br/></span>}
+                 {error.errorMessage.length > 0 && <span>{error.errorMessage}<br/><br/></span>}
                  <div>
                     <button type="submit" className="csn-btn" onClick={handleSubmit}>Submit</button>
                 </div>
@@ -115,12 +90,22 @@ function Login(props) {
     )
 }
 
+const mapStateToProps = (state) =>{
+    return{
+        error: state.authError,
+        auth: state.auth
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         login: (loginState, navigate) => {
             dispatch(LoginAuthAction(loginState, navigate));
+        },
+        clearError: () => {
+            dispatch(ClearErrorAction());
         }
     }
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -10,6 +10,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Redirect
 } from "react-router-dom";
 import Content from './components/Content';
 import Term from './components/Term';
@@ -21,7 +22,8 @@ import { connect } from 'react-redux';
 library.add(faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo, faUpload, faMinus, faCaretDown, faFileExcel, faRedo)
 
 function App(props) {
-  const {auth} = props
+  const { auth } = props
+  console.log(auth.isLoginIn);
   return (
     <Router>
       <div className="App">
@@ -40,7 +42,10 @@ function App(props) {
             <Route path="submit" element={<Submitted />} />
 
             <Route path="admin" element={<DeptHome />} />
+
           </Route>
+
+          <Route path="*" element={<Navigate to="/" replace />} />
 
         </Routes>
       </div>
@@ -50,8 +55,9 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-      auth: state
+    auth: state.auth
   }
 }
 

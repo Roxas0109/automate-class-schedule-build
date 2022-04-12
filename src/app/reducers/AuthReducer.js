@@ -2,7 +2,7 @@ import { AuthActionsTypes } from "../actions/AuthAction"
 
 export const authState = {
     isLoginIn: false,
-    user:{
+    user: {
         ID: null,
         name: null,
         token: null,
@@ -10,30 +10,20 @@ export const authState = {
     }
 }
 
-const ifuserisstilldd = () =>{
-    
-}
-
-
 const authReducer = (state = authState, action) => {
-    switch(action.type){
+    switch (action.type) {
         case AuthActionsTypes.LOGIN_SUCCESS: {
             const loginState = {
                 isLoginIn: true,
-                user:{
+                user: {
                     ID: 1,
                     name: action.payload.user.username,
                     token: action.payload.token,
-                    role: action.payload.role,
+                    role: action.payload.user.role,
                 }
-            }   
+            }
             localStorage.setItem("token", JSON.stringify(action.payload.token));
             return loginState;
-        }
-
-        case AuthActionsTypes.LOGIN_FAIL: {
-            console.log(state);
-            return state;
         }
 
         case AuthActionsTypes.LOGOUT_SUCCESS: {
@@ -44,10 +34,10 @@ const authReducer = (state = authState, action) => {
             localStorage.clear();
             return authState;
         }
-        default: 
+        default:
             return state;
     }
-    
+
 }
 
 export default authReducer;
