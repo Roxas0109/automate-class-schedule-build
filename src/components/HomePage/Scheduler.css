@@ -9,6 +9,11 @@
   align-items: center;
 }
 
+.rec-container{
+  overflow-y: scroll;
+  height: 30em;
+}
+
 .tooltip .csn-btn-icon {
   margin: 0 4px;
 }

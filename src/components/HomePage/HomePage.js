@@ -36,7 +36,7 @@ export default function HomePage() {
         <div>
           {
             shouldConfirm &&
-            <div>
+            <div className='dis-background'>
                 <div className="popup-comp">
                     <p>Are you sure?</p>
                     <div>

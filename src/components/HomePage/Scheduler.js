@@ -3,6 +3,7 @@ import './Scheduler.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SearchBar from './SearchBar';
 import { useDispatch } from 'react-redux';
+import HomePageUtils from '../../api/HomePageUtils';
 
 export default function Scheduler(props) {
   const dispatch = useDispatch()
@@ -12,6 +13,16 @@ export default function Scheduler(props) {
   const [recommendedClasses, setRecommendedClasses] = useState([]);
 
   const [unit, setUnit] = useState(0);
+
+  const sendClass = (className) => {
+    let pName = recommendedClasses[className]
+    let body = {
+      pClass: pName
+    }
+    HomePageUtils.postAndCallback("/api/projectedClass", JSON.stringify(body), (data) => {
+      if(data.success) addRecommended(className)
+    }, { "Content-Type": "application/json" });
+  }
 
   const getMajorAberrations = (getSpeficCourseAberrations) => {
     for (var l in props.suggestion.majorData) {
@@ -52,11 +63,11 @@ export default function Scheduler(props) {
     delete projectedClassesCopy[toRemove];
     setProjectedClasses(projectedClassesCopy)
 
-    if(moveToRecommendedClasses = "General ED (Unit 3)"){
+    if (moveToRecommendedClasses = "General ED (Unit 3)") {
       setUnit(unit - 3);
       return;
     }
-    else{
+    else {
       setUnit(unit - getSpeficCourse(moveToRecommendedClasses).units);
     }
 
@@ -94,7 +105,7 @@ export default function Scheduler(props) {
       <div className="course-container">
         <h4>{recommendedClasses[name]}</h4>
         <div className="tooltip">
-          <button className='csn-btn-icon' onClick={() => { addRecommended(name) }}><FontAwesomeIcon icon="plus" /></button>
+          <button className='csn-btn-icon' onClick={() => { sendClass(name)}}><FontAwesomeIcon icon="plus" /></button>
         </div>
       </div>
     );
@@ -144,7 +155,7 @@ export default function Scheduler(props) {
         <SearchBar majorData={props.suggestion.majorData} addClass={addClass} />
         <center><h4 className="scheduler-subtitle">Recommended Classes</h4></center>
         <hr />
-        <div className="semester-container">
+        <div className="rec-container">
           {recommendedItems}
         </div>
       </div>
