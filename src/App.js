@@ -10,46 +10,56 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Redirect
 } from "react-router-dom";
 import Content from './components/Content';
 import Term from './components/Term';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { Navigate} from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo, faUpload, faMinus, faCaretDown, faFileExcel, faRedo } from '@fortawesome/free-solid-svg-icons';
 import Department from './components/Department';
-library.add(faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo, faUpload, faMinus, faCaretDown, faFileExcel, faRedo )
+import { connect } from 'react-redux';
+library.add(faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo, faUpload, faMinus, faCaretDown, faFileExcel, faRedo)
 
-function App() {
+function App(props) {
+  const { auth } = props
+  console.log(auth.isLoginIn);
   return (
-      <Router>
-        <div className="App">
-          <Routes>
+    <Router>
+      <div className="App">
+        <Routes>
 
-            <Route path="/" element={
-              <div>
-                <img alt="ECS logo" src={logo} className="ECSlogo" />
-                <Login />
-              </div>
-            } />
-            <Route path="content" element={ !!localStorage.getItem('token') ?  <Content /> : <Navigate to = '/' />}>
-              <Route index element={<Term />} />
-              <Route path="import" element={<Import />} />
-              <Route path="home" element={<HomePage />} />
-              <Route path="submit" element={<Submitted />} />
+          <Route path="/" element={
+            <div>
+              <img alt="ECS logo" src={logo} className="ECSlogo" />
+              <Login />
+            </div>
+          } />
+          <Route path="content" element={auth.isLoginIn ? <Content /> : <Navigate to='/' />}>
+            <Route index element={<Term />} />
+            <Route path="import" element={<Import />} />
+            <Route path="home" element={<HomePage />} />
+            <Route path="submit" element={<Submitted />} />
 
-              <Route path="admin" element={<DeptHome/>} />
-            </Route>
-            
-          </Routes>
-        </div>
-      </Router>
+            <Route path="admin" element={<DeptHome />} />
+
+          </Route>
+
+          <Route path="*" element={<Navigate to="/" replace />} />
+
+        </Routes>
+      </div>
+    </Router>
 
   );
 }
 
-const isAuthenticated = () => {
-  console.log( "djfslkdjflsdkjf");
-  return !!localStorage.getItem('token');
-};
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    auth: state.auth
+  }
+}
 
-export default App;
+
+export default connect(mapStateToProps)(App);

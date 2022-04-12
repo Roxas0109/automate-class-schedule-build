@@ -1,10 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit';
-import OverlaySlice from '../features/overlay/OverlaySlice';
-import PopupSlice from '../features/popup/PopupSlice';
+import { createStore, applyMiddleware, compose, combineReducers} from '@reduxjs/toolkit';
+import authReducer  from './reducers/AuthReducer';
+import authErrorReducer from './reducers/AuthErrorReducer';
+import thunk from 'redux-thunk';
 
-export const store = configureStore({
-  reducer: {
-    overlay: OverlaySlice,
-    popup: PopupSlice,
-  },
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const rootReducer = combineReducers({
+    auth: authReducer,
+    authError: authErrorReducer
 });
+
+export const store = createStore(
+    rootReducer,
+    composeEnhancers(applyMiddleware(thunk))
+);
