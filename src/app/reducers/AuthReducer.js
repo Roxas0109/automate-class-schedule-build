@@ -1,3 +1,4 @@
+import jwt_decode from "jwt-decode";
 import { AuthActionsTypes } from "../actions/AuthAction"
 
 export const authState = {
@@ -10,7 +11,47 @@ export const authState = {
     }
 }
 
-const authReducer = (state = authState, action) => {
+const tokenPayload = () => {
+    let object = (localStorage.getItem('token'));
+
+    if (!object) {
+        return null;
+    }
+
+
+    object = JSON.parse(object)
+    const decode = jwt_decode(object);
+
+    if(decode != null)
+        return decode
+}
+
+const getState = () =>{
+    const token = tokenPayload();
+
+    if(token == null)
+        return authState;
+
+    if(new Date(token.exp) * 1000 < new Date().getTime()){
+        localStorage.clear();
+        return authState;
+    }
+    else{
+        const persistentState = {
+            isLoginIn: true,
+            user: {
+                ID: 1,
+                name: token.username,
+                role: token.role
+            }
+        }
+        return persistentState
+    }
+}
+
+getState();
+
+const authReducer = (state = getState(), action) => {
     switch (action.type) {
         case AuthActionsTypes.LOGIN_SUCCESS: {
             const loginState = {
@@ -18,7 +59,6 @@ const authReducer = (state = authState, action) => {
                 user: {
                     ID: 1,
                     name: action.payload.user.username,
-                    token: action.payload.token,
                     role: action.payload.user.role,
                 }
             }
