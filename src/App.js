@@ -23,7 +23,7 @@ library.add(faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo, faUpload, faMinu
 
 function App(props) {
   const { auth } = props
-  console.log(auth.isLoginIn);
+  console.log(localStorage.getItem('token') + "dslkfjsldkfj");
   return (
     <Router>
       <div className="App">
@@ -35,14 +35,11 @@ function App(props) {
               <Login />
             </div>
           } />
-          <Route path="content" element={auth.isLoginIn ? <Content /> : <Navigate to='/' />}>
-            <Route index element={<Term />} />
+          <Route path="content" element={localStorage.getItem('token') ? <Content /> : <Navigate to='/' />}>
+            <Route index element={<Term />} /> 
             <Route path="import" element={<Import />} />
             <Route path="home" element={<HomePage />} />
             <Route path="submit" element={<Submitted />} />
-
-            <Route path="admin" element={<DeptHome />} />
-
           </Route>
 
           <Route path="*" element={<Navigate to="/" replace />} />
@@ -55,7 +52,6 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     auth: state.auth
   }
