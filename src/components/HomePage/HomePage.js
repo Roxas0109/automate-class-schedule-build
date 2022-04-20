@@ -27,7 +27,7 @@ export default function HomePage() {
             }
             else
                 alert("Not working");
-        });
+        }, {authorization: localStorage.getItem('token')});
     }, []);
 
     const confirmSubmit = function () {
