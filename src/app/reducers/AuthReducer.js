@@ -40,7 +40,7 @@ const getState = () =>{
         const persistentState = {
             isLoginIn: true,
             user: {
-                ID: 1,
+                ID: token.ID,
                 name: token.username,
                 role: token.role
             }
@@ -57,7 +57,7 @@ const authReducer = (state = getState(), action) => {
             const loginState = {
                 isLoginIn: true,
                 user: {
-                    ID: 1,
+                    ID: action.payload.user.ID,
                     name: action.payload.user.username,
                     role: action.payload.user.role,
                 }
