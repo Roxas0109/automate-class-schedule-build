@@ -19,8 +19,6 @@ function NavigationBar(props) {
                 <h1 className="title-name"> Projected Schedule Planner</h1>
                 <div className='button-contaniner'>
                     <button type='submit' className="sign-out navButton" onClick={handleLogout}><FontAwesomeIcon icon="sign-out-alt" /> Sign Out</button>
-                    {(auth.user.role == "admin") &&
-                        <button type='submit' className="sign-out navButton" onClick={handleLogout}><FontAwesomeIcon icon="sign-out-alt" /> LOL</button> }
                 </div>
             </nav>
         </div>

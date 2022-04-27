@@ -27,7 +27,7 @@ export default function History(props) {
         semesterData[modifyKey] = Object.keys(value);
        }
       }
-      addSemesterData();
+    addSemesterData();
 
     const listItems = Object.keys(semesterData).map((semester) => {
       return (

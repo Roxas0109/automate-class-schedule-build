@@ -20,7 +20,6 @@ export default function SearchBar({ majorData, addClass }) {
         })
         
         filterSearch.push(generalEd[0])
-        
 
         if (target == "")
             setFilterCourseObjects([])

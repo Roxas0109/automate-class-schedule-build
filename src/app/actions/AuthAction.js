@@ -9,19 +9,11 @@ export const AuthActionsTypes = {
 export const LoginAuthAction = (loginState, navigate) =>{
     return async (dispatch) => {
         try{
-            const data = await fetch("http://localhost:80/api/login", {body: JSON.stringify(loginState), method: "POST", headers: {"Content-Type": "application/json"}, credentials: 'include',});
+            const data = await fetch("http://localhost:80/api/login", {body: JSON.stringify(loginState), method: "POST", headers: {"Content-Type": "application/json"}, credentials: 'include'});
             const res = await data.json();
 
             if(res.status === "success"){
                 dispatch({type: AuthActionsTypes.LOGIN_SUCCESS, payload: res});
-                console.log(res.user.role);
-                if(res.user.role == "admin"){
-                    navigate("/content/admin")
-                }
-                else{
-                    navigate("/content");
-                }
-
                 navigate("/content");
              } else{
                 dispatch({type: AuthActionsTypes.LOGIN_FAIL, payload: res.error});

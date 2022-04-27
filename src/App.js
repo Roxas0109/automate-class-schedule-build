@@ -4,25 +4,24 @@ import Login from './components/Login';
 import Import from './components/Import';
 import Submitted from './components/Submitted';
 import HomePage from './components/HomePage/HomePage';
-import DeptHome from './components/Department/DeptHome';
+import Student from './components/Department/Student'
+import Course from './components/Department/Course'
 import logo from './ECSlogo.jpg';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Redirect
 } from "react-router-dom";
 import Content from './components/Content';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { Navigate } from "react-router-dom";
 import { faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo, faUpload, faMinus, faCaretDown, faFileExcel, faRedo } from '@fortawesome/free-solid-svg-icons';
-import Department from './components/Department';
+import Department from './components/Department/Department';
 import { connect } from 'react-redux';
 library.add(faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo, faUpload, faMinus, faCaretDown, faFileExcel, faRedo)
 
 function App(props) {
   const { auth } = props
-  console.log(localStorage.getItem('token') + "dslkfjsldkfj");
   return (
     <Router>
       <div className="App">
@@ -35,9 +34,11 @@ function App(props) {
             </div>
           } />
           <Route path="content" element={localStorage.getItem('token') ? <Content /> : <Navigate to='/' />}>
-            <Route index element={<Import />} /> 
+            <Route index element={auth.user.role === 0? <Import/> : <Department/>} /> 
             <Route path="home" element={<HomePage />} />
             <Route path="submit" element={<Submitted />} />
+            <Route path = "course/:courseName" element={<Course/>}/>
+            <Route path = "student/:studentID" element={<Student/>}/>
           </Route>
 
           <Route path="*" element={<Navigate to="/" replace />} />

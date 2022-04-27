@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { LoginAuthAction, ClearErrorAction } from '../app/actions/AuthAction';
 import { useNavigate } from 'react-router-dom';
 
+import HomePageUtils from "../api/HomePageUtils";
+
 function Login(props) {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -17,48 +19,8 @@ function Login(props) {
             clearError();
         }
 
-        login({user: username, password: password}, navigate)
-        
-        
-        // if(auth.user.role != null){
-        //     console.log(auth.user.role);
-        //     if(auth.user.role == "admin"){
-        //         navigate("/content/admin")
-        //     }
-        //     else{
-        //         navigate("/content")
-        //     }
-        // }
+        login({user: username, password: password}, navigate);
      }
-    // const getRole = () => {
-    //     let tempRole = tokenPayload();
-              
-    //     if(tempRole ==  null){
-    //         return;
-    //     }
-
-    //     if(tempRole.role == "admin"){
-    //        return true
-    //     }
-    //     else return false
-
-
-    // };
-
-    // const tokenPayload = () =>{
-    //     let object = (localStorage.getItem('token'));
-
-    //     if(!object){
-    //         return null;
-    //     }
-
-    //     object = JSON.parse(object)
-
-    //     if(object['token']){
-    //         return decode(object['token']);
-    //     }
-    // }
-
     return (
         <div className="loginContainer">
             <div className="wrapper">
