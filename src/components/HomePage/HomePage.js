@@ -14,20 +14,31 @@ export default function HomePage() {
     const [shouldConfirm, setShouldConfirm] = useState(false);
     const navigate = useNavigate();
 
-
     const fileFormData = new FormData();
-    fileFormData.append('files', state.files[Object.keys(state.files)[0]])
-
+    
     useEffect(() => {
-        HomePageUtils.postAndCallback("/api/import", fileFormData, (data) => {
-            console.log(data);
-            if (data.status === "success") {
+        if (localStorage.getItem("dont")) {
+            HomePageUtils.getAndCallback("/api/course-information", (data) => {
+                console.log(data)
+                if (data.success) {
+                    console.log("use data!")
+                }
+                else {
+                    console.log("wtf")
+                }
+            }, { authorization: localStorage.getItem('token') })
+        } else {
+            fileFormData.append('files', state.files[Object.keys(state.files)[0]])
+            HomePageUtils.postAndCallback("/api/import", fileFormData, (data) => {
                 console.log(data);
-                setStudentData(data)
-            }
-            else
-                alert("Not working");
-        }, {authorization: localStorage.getItem('token')});
+                if (data.status === "success") {
+                    console.log(data);
+                    setStudentData(data)
+                }
+                else
+                    alert("Not working");
+            }, { authorization: localStorage.getItem('token') });
+        }
     }, []);
 
     const confirmSubmit = function () {

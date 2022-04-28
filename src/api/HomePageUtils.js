@@ -15,4 +15,17 @@ function postAndCallback(url, body, callback, headers) {
     });
 }
 
-export default { postAndCallback, API_DOMAIN };
+function getAndCallback(url, callback, headers) {
+  fetch(API_DOMAIN + url, {
+    credentials: 'include',
+    method: "GET",
+    headers: {...headers}
+  }).then(res => res.json())
+    .then(data => {
+      callback(data)
+    }).catch((e) => {
+      console.log(e);
+    });
+}
+
+export default { postAndCallback, getAndCallback, API_DOMAIN };
