@@ -14,16 +14,6 @@ export default function Scheduler(props) {
 
   const [unit, setUnit] = useState(0);
 
-  const sendClass = (className) => {
-    let pName = recommendedClasses[className]
-    let body = {
-      pClass: pName
-    }
-    HomePageUtils.postAndCallback("/api/projectedClass", JSON.stringify(body), (data) => {
-      if(data.success) addRecommended(className)
-    }, { "Content-Type": "application/json" });
-  }
-
   const getMajorAberrations = (getSpeficCourseAberrations) => {
     for (var l in props.suggestion.majorData) {
       if (getSpeficCourseAberrations == props.suggestion.majorData[l].aberrations)
@@ -63,7 +53,7 @@ export default function Scheduler(props) {
     delete projectedClassesCopy[toRemove];
     setProjectedClasses(projectedClassesCopy)
 
-    if (moveToRecommendedClasses = "General ED (Unit 3)") {
+    if (moveToRecommendedClasses == "General ED (Unit 3)") {
       setUnit(unit - 3);
       return;
     }
@@ -105,7 +95,7 @@ export default function Scheduler(props) {
       <div className="course-container">
         <h4>{recommendedClasses[name]}</h4>
         <div className="tooltip">
-          <button className='csn-btn-icon' onClick={() => { sendClass(name)}}><FontAwesomeIcon icon="plus" /></button>
+          <button className='csn-btn-icon' onClick={() => { addRecommended(name)}}><FontAwesomeIcon icon="plus" /></button>
         </div>
       </div>
     );
