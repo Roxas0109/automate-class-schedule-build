@@ -8,10 +8,13 @@ export default function Department() {
     const [course, setCourse] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleStudentSubmit = (e) => {
         if(studentID.length > 0)
             navigate(`/content/student/${studentID}`);
-        else
+    }
+
+    const handleCourseSubmit = (e) => {
+        if(course.length > 0)
             navigate(`/content/course/${course}`);
     }
 
@@ -20,9 +23,10 @@ export default function Department() {
             <div className = "department-wrapper">
                 <h1>Student</h1>
                 <input type = "text" className="csn-inp csn-expand" placeholder="CSUN Student ID" onChange ={(e) => {setStudentID(e.target.value)}}></input>
+                <button tyoe = "submit" className="redBtn" onClick={handleStudentSubmit}> Student Search</button>
                 <h1>Course</h1>
                 <input type = "text" className="csn-inp csn-expand" placeholder="Enter Course" onChange ={(e) => {setCourse(e.target.value)}}></input>
-                <button tyoe = "submit" className="redBtn" onClick={handleSubmit}>Serach</button>
+                <button tyoe = "submit" className="redBtn" onClick={handleCourseSubmit}> Course Search</button>
             </div>
         </div>
     )
