@@ -59,25 +59,6 @@ export default function HomePage() {
             }
         </div>
     )
-
-
-    //Grab data from the server
-    //Pass the data as props
 }
 
 
-/*  <Link to="/content/add">
-      <button className="redBtn"><FontAwesomeIcon icon="plus" /> Add Class</button>
-  </Link>
-  <div className="pClasses">
-      <ProjectedClasses />
-  </div>
-  <div className="eCourses">
-      <EligibleCourses />
-  </div>
-  <div className="cCourses">
-      <CompletedCourses />
-  </div>
-  <Link to="/content/submit">
-      <button className="redBtn"><FontAwesomeIcon icon="check" /> Submit</button>
-  </Link>*/

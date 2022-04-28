@@ -19,7 +19,6 @@ export default function History(props) {
       console.log(copy);
       setExpandedData(copy);
     });
-    console.log(expandedData);
 
     const addSemesterData = () =>{
        for(let [key, value] of Object.entries(props.history).sort()){
