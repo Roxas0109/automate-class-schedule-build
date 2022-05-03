@@ -1,0 +1,11 @@
+.home-comp{
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 3em;
+}
+
+.semester-container {
+    width: 90%;
+    margin: auto;
+  }

@@ -22,17 +22,13 @@ export default function HomePage() {
         HomePageUtils.postAndCallback("/api/import", fileFormData, (data) => {
             console.log(data);
             if (data.status === "success") {
-                console.log(data);
+                console.log(data.semester);
                 setStudentData(data)
             }
             else
                 alert("Not working");
-        }, {authorization: localStorage.getItem('token')});
+        }, { authorization: localStorage.getItem('token') });
     }, []);
-
-    const confirmSubmit = function () {
-
-    }
 
     return (
         <div>

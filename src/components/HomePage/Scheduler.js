@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import HomePageUtils from '../../api/HomePageUtils';
 
 export default function Scheduler(props) {
-  const dispatch = useDispatch()
 
   const [projectedClasses, setProjectedClasses] = useState([]);
 

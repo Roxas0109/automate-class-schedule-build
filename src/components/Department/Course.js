@@ -5,6 +5,7 @@ import './Course.css'
 export default function Course() {
 
     const { courseName } = useParams();
+    const [courseData, setCourseData] = useState({});
 
     const fetchCourseData = async () => {
         const options = {
@@ -18,7 +19,7 @@ export default function Course() {
         const courseData = await courseFetch.json()
 
         if (courseData.status === "success") {
-            setData(courseData.data)
+            setCourseData(courseData.data)
         } else {
             alert("NOT WOKRING (CHANGE LATER)")
         }
@@ -28,16 +29,12 @@ export default function Course() {
         fetchCourseData();
     }, []);
 
-    const [data, setData] = useState({});
-
     return (
         <div>
             <div className='course-wrapper'>
                 <h1>Course: {courseName}</h1>
-                <h2>Number of Students Projected for {data.projectedTerm}: {data.studentsProjected == 0 ? 0 :data.studentsProjected}</h2>
-                <div>
-                    <Chart chartData={data.historicalData} />
-                </div>
+                <h2>Number of Students Projected for {courseData.projectedTerm}: {courseData.studentsProjected == 0 ? 0 :courseData.studentsProjected}</h2>
+                <Chart chartData={courseData.historicalData} />
             </div>
         </div>
     )

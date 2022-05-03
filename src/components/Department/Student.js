@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
+import './Student.css'
 
 export default function Student() {
 
     const { studentID } = useParams();
-    const [data, setData] = useState(null);
+    const [studentData, setStudentData] = useState(null);
 
 
     const fetchStudentData = async () => {
@@ -19,8 +20,7 @@ export default function Student() {
         const studentIDData = await studentIDFetch.json()
 
         if (studentIDData.status == "success") {
-            console.log(studentIDData.data);
-            setData(studentIDData.data)
+            setStudentData(studentIDData.data)
         } else {
             alert("NOT WOKRING (CHANGE LATER)")
         }
@@ -32,7 +32,30 @@ export default function Student() {
 
     return (
         <div>
-            <h1>Student {studentID}</h1>
+            <center><h1>Student: {studentID}</h1></center>
+            <div className='home-comp'>
+                <center><h3>Past Semesters</h3></center>
+                {studentData != null && studentData.completedCourses.map((obj, i) => {
+                    return (
+                        <div>
+                            <center><h4>{obj.course} {obj.term}</h4></center>
+                        </div>
+                    )
+                })}
+            </div>
+            <div className='home-comp'>
+                <center><h3>Projected Courses</h3></center>
+                <div className='semester-container'>
+                    {studentData != null && studentData.projectedCourses.map((obj, i) => {
+                        return (
+                            <div>
+                                <center><h4>{obj.course} {obj.term}</h4></center>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+            <center><button tyoe="submit" className="redBtn">Download DPR</button></center>
         </div>
     )
 }

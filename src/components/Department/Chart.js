@@ -31,7 +31,7 @@ export const Chart = ({ chartData }) => {
                     type="monotone"
                     dataKey="projectedTermAmount"
                     name="Projected Term Amount"
-                    stroke="#8884d8"
+                    stroke="#FF0000"
                     activeDot={{ r: 8 }}
                 />
             </LineChart>
