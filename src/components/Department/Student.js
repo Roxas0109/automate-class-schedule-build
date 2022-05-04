@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
-import './Student.css'
+import HomePageUtils from '../../api/HomePageUtils';
+// import './Student.css'
 
 export default function Student() {
 
@@ -30,6 +31,31 @@ export default function Student() {
         fetchStudentData();
     }, []);
 
+    const getDPR = () => {
+
+        const options = {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/pdf",
+                "authorization": localStorage.getItem("token"),
+            }
+        }
+
+        fetch(`http://localhost:80/api/downloadDPR/${studentID}`, options)
+            .then(response => response.blob())
+            .then((blob) => {
+                const url = window.URL.createObjectURL(
+                    new Blob([blob])
+                )
+                const link = document.createElement('a')
+                link.href = url
+                link.setAttribute('target', '_blank')
+                document.body.appendChild(link)
+                link.click()
+                link.parentNode.removeChild(link)
+            })
+    }
+
     return (
         <div>
             <center><h1>Student: {studentID}</h1></center>
@@ -37,7 +63,7 @@ export default function Student() {
                 <center><h3>Past Semesters</h3></center>
                 {studentData != null && studentData.completedCourses.map((obj, i) => {
                     return (
-                        <div>
+                        <div className="semester-drop">
                             <center><h4>{obj.course} {obj.term}</h4></center>
                         </div>
                     )
@@ -55,7 +81,7 @@ export default function Student() {
                     })}
                 </div>
             </div>
-            <center><button tyoe="submit" className="redBtn">Download DPR</button></center>
+            <center><button target="_blank" type="button" className="redBtn" onClick={getDPR}>Download DPR</button></center>
         </div>
     )
 }
