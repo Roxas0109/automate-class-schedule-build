@@ -41,7 +41,7 @@ export default function Student() {
             }
         }
 
-        fetch(`http://localhost:80/api/downloadDPR/${studentID}`, options)
+        fetch(`http://localhost:80/api/download-dpr/${studentID}`, options)
             .then(response => response.blob())
             .then((blob) => {
                 const url = window.URL.createObjectURL(
