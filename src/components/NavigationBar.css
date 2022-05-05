@@ -1,13 +1,6 @@
-body{
-    margin: 0;
-}
-
 .nav-container{
     position: relative;
     background-color: #D22030;
-}
-
-nav{
     display: flex;
     height: 60px;
     justify-content: space-between;
@@ -20,28 +13,7 @@ nav{
     user-select: none;
 }
 
-.button-contaniner{
-   display: flex;
-   height: 100%;
-   align-items: center;
-   padding: 0 10px;
-}
-
 .navButton{
-    display: flex;
-    margin-right: 10px;
-    align-items: center;
-    /* padding: 0 15px; */
-    font-size: large;
-    color: white;
-    background-color: transparent;
-    border: 0;
     height: 100%;
-    cursor: pointer;
-    transition: background-color 0.27s;
-    user-select: none;
-}
-
-button:hover{
-    background-color: #911620;
+    border-radius: 0%;
 }

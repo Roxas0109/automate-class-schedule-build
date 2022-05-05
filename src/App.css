@@ -69,11 +69,21 @@ body {
   border-radius: 50%;
   height: 24px;
   width: 24px;
-  font-size: 14px;
+  font-size: 16px;
   border: none;
   color: white;
   cursor: pointer;
   display: inline-block;
+}
+
+.csn-btn-icon-inline {
+  height: 24px;
+  width: 24px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 5px;
 }
 
 .csn-inp {

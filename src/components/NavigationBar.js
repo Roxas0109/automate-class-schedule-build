@@ -6,7 +6,7 @@ import { LogoutAuthAction } from '../app/actions/AuthAction';
 
 
 function NavigationBar(props) {
-    const {auth, logout} = props;
+    const { auth, logout } = props;
     const navigate = useNavigate();
 
     const handleLogout = (e) => {
@@ -14,14 +14,11 @@ function NavigationBar(props) {
         navigate("/");
     }
     return (
-        <div className='nav-container'>
-            <nav>
-                <h1 className="title-name"> Projected Schedule Planner</h1>
-                <div className='button-contaniner'>
-                    <button type='submit' className="sign-out navButton" onClick={handleLogout}><FontAwesomeIcon icon="sign-out-alt" /> Sign Out</button>
-                </div>
-            </nav>
-        </div>
+        <nav className='nav-container'>
+            <h1 className="title-name"> Projected Schedule Planner</h1>
+            <button type='submit' className="navButton redBtn" onClick={handleLogout}>
+                <FontAwesomeIcon icon="sign-out-alt" className='csn-btn-icon-inline' /> Sign Out</button>
+        </nav>
     );
 }
 
@@ -34,7 +31,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         logout: () => {
-            dispatch(LogoutAuthAction()); 
+            dispatch(LogoutAuthAction());
         }
     }
 }

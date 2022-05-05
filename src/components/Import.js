@@ -11,13 +11,13 @@ export default function Import() {
     // const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const handleChange = (e) =>{
+    const handleChange = (e) => {
         setShowBtn(
-            <button className="redBtn" onClick={()=>{
+            <button className="redBtn" onClick={() => {
                 // dispatch(setLoader(true))
                 setTimeout(() => { // Set timout for example purpose.
                     // dispatch(setLoader(false))
-                    navigate('/content/home', {state: {files: e.target.files}})
+                    navigate('/content/home', { state: { files: e.target.files } })
                 }, 2000)
             }}>Analyze</button>
         )
@@ -26,13 +26,11 @@ export default function Import() {
 
     return (
         <div className="importContainer">
+            <h1>Import Degree Progress Report (DPR)</h1>
             <div className="importWrapper">
-                <h1>Import Degree Progress Report (DPR)</h1>
-                <input className="import" type='file' accept='application/pdf' id='imp' onChange={handleChange}></input>
-                <label for='imp' className='redBtn'><FontAwesomeIcon className='ic' icon="upload"/>Import</label>
-                <br/>
+                <input className="importBtn" type='file' accept='application/pdf' id='imp' onChange={handleChange}></input>
+                <label for='imp' className='redBtn'><FontAwesomeIcon className='csn-btn-icon-inline' icon="upload" />Import</label>
                 {showBtn}
-                <br/>
                 <button className="redBtn">Load previous DPR</button>
             </div>
         </div>
