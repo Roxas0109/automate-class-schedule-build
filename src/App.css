@@ -16,25 +16,6 @@ img.ECSlogo{
   user-select: none;
 }
 
-.redBtn{
-  font-size: large;
-  color: white;
-  box-shadow: none;
-  border: none;
-  padding: 5px 20px 5px 20px;
-  border-radius: 500px;
-  background-color: #D22030;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  transition: background-color 0.27s;
-  margin: 8px 0;
-  user-select: none;
-}
-
-.redBtn:hover {
-  background-color: #911620;
-}
-
 .page-content {
   height: 100%;
   width: 100%;
@@ -46,9 +27,6 @@ img.ECSlogo{
 
 /* Standards */
 
-body {
-  font-family: 'Open Sans', sans-serif;
-}
 
 .csn-btn {
   border-radius: 8px;
@@ -61,7 +39,12 @@ body {
   font-weight: 600;
   cursor: pointer;
   margin-bottom: 5px;
+  transition: background-color 0.27s;
 
+}
+
+.csn-btn:hover {
+  background-color: #911620;
 }
 
 .csn-btn-icon {
@@ -75,6 +58,7 @@ body {
   cursor: pointer;
   display: inline-block;
 }
+
 
 .csn-btn-icon-inline {
   height: 24px;

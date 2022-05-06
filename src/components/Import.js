@@ -13,7 +13,7 @@ export default function Import() {
 
     const handleChange = (e) => {
         setShowBtn(
-            <button className="redBtn" onClick={() => {
+            <button className="csn-btn" onClick={() => {
                 // dispatch(setLoader(true))
                 setTimeout(() => { // Set timout for example purpose.
                     // dispatch(setLoader(false))
@@ -29,9 +29,9 @@ export default function Import() {
             <h1>Import Degree Progress Report (DPR)</h1>
             <div className="importWrapper">
                 <input className="importBtn" type='file' accept='application/pdf' id='imp' onChange={handleChange}></input>
-                <label for='imp' className='redBtn'><FontAwesomeIcon className='csn-btn-icon-inline' icon="upload" />Import</label>
+                <label for='imp' className='csn-btn'><FontAwesomeIcon className='csn-btn-icon-inline' icon="upload" />Import</label>
                 {showBtn}
-                <button className="redBtn">Load previous DPR</button>
+                <button className="csn-btn">Load previous DPR</button>
             </div>
         </div>
     )

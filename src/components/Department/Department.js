@@ -23,10 +23,10 @@ export default function Department() {
             <div className = "department-wrapper">
                 <h1>Student</h1>
                 <input type = "text" className="csn-inp csn-expand" placeholder="CSUN Student ID" onChange ={(e) => {setStudentID(e.target.value)}}></input>
-                <button tyoe = "submit" className="redBtn" onClick={handleStudentSubmit}> Student Search</button>
+                <button tyoe = "submit" className="csn-btn" onClick={handleStudentSubmit}> Student Search</button>
                 <h1>Course</h1>
                 <input type = "text" className="csn-inp csn-expand" placeholder="Enter Course" onChange ={(e) => {setCourse(e.target.value)}}></input>
-                <button tyoe = "submit" className="redBtn" onClick={handleCourseSubmit}> Course Search</button>
+                <button tyoe = "submit" className="csn-btn" onClick={handleCourseSubmit}> Course Search</button>
             </div>
         </div>
     )

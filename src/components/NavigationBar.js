@@ -16,7 +16,7 @@ function NavigationBar(props) {
     return (
         <nav className='nav-container'>
             <h1 className="title-name"> Projected Schedule Planner</h1>
-            <button type='submit' className="navButton redBtn" onClick={handleLogout}>
+            <button type='submit' className="navButton csn-btn" onClick={handleLogout}>
                 <FontAwesomeIcon icon="sign-out-alt" className='csn-btn-icon-inline' /> Sign Out</button>
         </nav>
     );

@@ -81,7 +81,7 @@ export default function Student() {
                     })}
                 </div>
             </div>
-            <center><button target="_blank" type="button" className="redBtn" onClick={getDPR}>Download DPR</button></center>
+            <center><button target="_blank" type="button" className="csn-btn" onClick={getDPR}>Download DPR</button></center>
         </div>
     )
 }
