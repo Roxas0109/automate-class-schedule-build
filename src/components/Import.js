@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 // import { setLoader } from '../features/overlay/OverlaySlice'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import RequestUtils from "../api/RequestUtils";
 
 export default function Import() {
 
@@ -12,15 +13,23 @@ export default function Import() {
     const navigate = useNavigate()
 
     const handleChange = (e) =>{
-        setShowBtn(
-            <button className="redBtn" onClick={()=>{
-                // dispatch(setLoader(true))
-                setTimeout(() => { // Set timout for example purpose.
-                    // dispatch(setLoader(false))
-                    navigate('/content/home', {state: {files: e.target.files}})
-                }, 2000)
-            }}>Analyze</button>
-        )
+          const fileFormData = new FormData();
+          fileFormData.append('files', e.target.files[0])
+
+          fetch(RequestUtils.getAPIHost() + "import", {
+            headers: {
+              'authorization': localStorage.token
+            },
+            method: 'POST',
+            body: fileFormData
+          }).then(res => res.json()).then(res => {
+            if(res.status == "error"){
+              let reason = res.message || "Failed to upload.";
+              alert(reason);
+              return;
+            }
+            navigate("/");
+          });
     }
 
 
@@ -31,11 +40,9 @@ export default function Import() {
                 <input className="import" type='file' accept='application/pdf' id='imp' onChange={handleChange}></input>
                 <label for='imp' className='redBtn'><FontAwesomeIcon className='ic' icon="upload"/>Import</label>
                 <br/>
-                {showBtn}
                 <br/>
-                <button className="redBtn">Load previous DPR</button>
+                <button className="redBtn" onClick={() => navigate("/")}>Return to home</button>
             </div>
         </div>
     )
 }
-

@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from "react-router-dom";
 import { Chart } from "../Department/Chart";
+import RequestUtils from '../../api/RequestUtils';
+
 import './Course.css'
 export default function Course() {
+
+    const navigate = useNavigate();
 
     const { courseName } = useParams();
     const [courseData, setCourseData] = useState({});
@@ -15,13 +19,15 @@ export default function Course() {
                 "authorization": localStorage.getItem("token")
             }
         }
-        const courseFetch = await fetch(`http://localhost:80/api/project/course/${courseName}`, options)
+        const courseFetch = await fetch(RequestUtils.getAPIHost() + `project/course/${courseName}`, options)
         const courseData = await courseFetch.json()
 
         if (courseData.status === "success") {
             setCourseData(courseData.data)
         } else {
-            alert("NOT WOKRING (CHANGE LATER)")
+            navigate("/");
+            alert("No data found on course.");
+            return;
         }
     }
 

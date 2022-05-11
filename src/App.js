@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Login from './components/Login';
 import Import from './components/Import';
-import Submitted from './components/Submitted';
 import HomePage from './components/HomePage/HomePage';
 import Student from './components/Department/Student'
 import Course from './components/Department/Course'
@@ -26,20 +25,14 @@ function App(props) {
     <Router>
       <div className="App">
         <Routes>
-
-          <Route path="/" element={
-            <div>
-              <img alt="ECS logo" src={logo} className="ECSlogo" />
-              <Login />
-            </div>
-          } />
-          <Route path="content" element={localStorage.getItem('token') ? <Content /> : <Navigate to='/' />}>
-            <Route index element={auth.user.role === 0? <Import/> : <Department/>} /> 
+          <Route path="" element={localStorage.getItem('token') ? <Content /> : <Navigate to='/login' />}>
+            <Route index element={auth.user.role === 0? <HomePage/> : <Department/>} />
             <Route path="home" element={<HomePage />} />
-            <Route path="submit" element={<Submitted />} />
+            <Route path="import" element={<Import />} />
             <Route path = "course/:courseName" element={<Course/>}/>
             <Route path = "student/:studentID" element={<Student/>}/>
           </Route>
+          <Route path="/login" element={<Login/>} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
 

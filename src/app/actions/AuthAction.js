@@ -14,7 +14,7 @@ export const LoginAuthAction = (loginState, navigate) =>{
 
             if(res.status === "success"){
                 dispatch({type: AuthActionsTypes.LOGIN_SUCCESS, payload: res});
-                navigate("/content");
+                navigate("/");
              } else{
                 dispatch({type: AuthActionsTypes.LOGIN_FAIL, payload: res.error});
             }

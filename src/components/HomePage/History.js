@@ -10,27 +10,26 @@ export default function History(props) {
 
     const toggleData = useCallback((semester) => {
       var copy = [...expandedData];
-      console.log(copy);
       if(copy.indexOf(semester) != -1){
         copy.splice(copy.indexOf(semester), 1);
       }else{
         copy.push(semester);
       }
-      console.log(copy);
       setExpandedData(copy);
     });
 
     const addSemesterData = () =>{
        for(let [key, value] of Object.entries(props.history).sort()){
-         let modifyKey = semesterNames[key.substring(2,4)] + " 20" + key.substring(0,2)
+        let modifyKey = semesterNames[key.substring(2,4)] + " 20" + key.substring(0,2)
         semesterData[modifyKey] = Object.keys(value);
        }
       }
+
     addSemesterData();
 
     const listItems = Object.keys(semesterData).map((semester) => {
       return (
-        <div>
+        <div key={semester}>
           <div className="semester-drop" onClick={() => {toggleData(semester)}}>
             <h4>{semester}</h4>
             <FontAwesomeIcon icon="caret-down"/>
@@ -39,7 +38,7 @@ export default function History(props) {
             <div className="semester-courses-container">
               {semesterData[semester].map((i) => {
                 return (
-                  <div className="semester-course"><h4>{i}</h4></div>
+                  <div key={i} className="semester-course"><h4>{i}</h4></div>
                 );
               })}
             </div>

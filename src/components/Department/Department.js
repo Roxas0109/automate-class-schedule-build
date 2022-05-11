@@ -10,12 +10,12 @@ export default function Department() {
 
     const handleStudentSubmit = (e) => {
         if(studentID.length > 0)
-            navigate(`/content/student/${studentID}`);
+            navigate(`/student/${studentID}`);
     }
 
     const handleCourseSubmit = (e) => {
         if(course.length > 0)
-            navigate(`/content/course/${course}`);
+            navigate(`/course/${course}`);
     }
 
     return (

@@ -18,7 +18,7 @@ export default function SearchBar({ majorData, addClass }) {
                 }
             })
         })
-        
+
         filterSearch.push(generalEd[0])
 
         if (target == "")
@@ -43,7 +43,7 @@ export default function SearchBar({ majorData, addClass }) {
                         {filterCourseObjects.length != 0 &&
                             filterCourseObjects.slice(0, 3).map(course => {
                                 return (
-                                    <div onClick={() => addCourseToProjected(course)}><h4>{course}</h4></div>// testint purpose
+                                    <div key={course} onClick={() => addCourseToProjected(course)}><h4>{course}</h4></div>// testint purpose
                                 )
                             })}
                     </div>

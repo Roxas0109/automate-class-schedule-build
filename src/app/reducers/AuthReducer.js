@@ -18,8 +18,6 @@ const tokenPayload = () => {
         return null;
     }
 
-
-    object = JSON.parse(object)
     const decode = jwt_decode(object);
 
     if(decode != null)
@@ -62,7 +60,7 @@ const authReducer = (state = getState(), action) => {
                     role: action.payload.user.role,
                 }
             }
-            localStorage.setItem("token", JSON.stringify(action.payload.token));
+            localStorage.setItem("token", action.payload.token);
             return loginState;
         }
 
