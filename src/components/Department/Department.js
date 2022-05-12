@@ -27,6 +27,9 @@ export default function Department() {
                 <h1>Course</h1>
                 <input type = "text" className="csn-inp csn-expand" placeholder="Enter Course" onChange ={(e) => {setCourse(e.target.value)}}></input>
                 <button tyoe = "submit" className="redBtn" onClick={handleCourseSubmit}> Course Search</button>
+                <br/>
+                <br/>
+                <button tyoe = "submit" className="redBtn" style={{backgroundColor: "#999999"}}onClick={() => {navigate('/allocation')}}>View Allocations</button>
             </div>
         </div>
     )

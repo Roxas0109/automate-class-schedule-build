@@ -1,16 +1,29 @@
-import './DeptHome.css'
+import './Allocation.css'
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ReactPaginate from 'react-paginate'
+import RequestUtils from '../../api/RequestUtils';
 import JSONdata from './MOCK_DATA.json'
 
-export default function DeptHome() {
+export default function Allocation() {
 
     const [courses, setCourses] = useState([])
     const XLSX = require('xlsx')
 
+    const fetchNew = () => {
+      fetch(RequestUtils.getAPIHost() + `allocation`, {
+          method: 'GET',
+          headers: {
+              "Content-Type": "application/json",
+              "authorization": localStorage.getItem("token")
+          }
+      }).then(res => res.json()).then(res => {
+          setCourses(res);
+      });
+    };
+
     useEffect(() => {
-        setCourses(JSONdata)
+        fetchNew();
     }, [])
 
     const [pageNumber, setPageNumber] = useState(0)
@@ -34,12 +47,12 @@ export default function DeptHome() {
                 </tr>
             )
         })
-    
+
     const convertJsonToExcel=()=>{
         const workSheet = XLSX.utils.json_to_sheet(courses)
         const workBook = XLSX.utils.book_new()
         XLSX.utils.book_append_sheet(workBook,workSheet,"lass Allocation")
-        
+
         XLSX.write(workBook,{bookType:'xlsx', type:'buffer'})
 
         XLSX.write(workBook,{bookType:'xlsx',type:'binary'})
@@ -50,7 +63,7 @@ export default function DeptHome() {
     const changePage = ({ selected }) => {
         setPageNumber(selected)
     }
-    
+
     function createTable() {
         return (
             <>
@@ -93,7 +106,7 @@ export default function DeptHome() {
                     activeLinkClassName={'pagActive'}
                     breakLinkClassName={'dots'}
                 />
-                <button type="submit" className="csn-btn">
+                <button type="submit" className="csn-btn" onClick={fetchNew}>
                     <FontAwesomeIcon icon="redo" />
                     Generate Allocation</button>
                 <button type="submit" className="csn-btn" onClick={convertJsonToExcel}>

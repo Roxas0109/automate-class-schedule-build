@@ -16,6 +16,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { Navigate } from "react-router-dom";
 import { faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo, faUpload, faMinus, faCaretDown, faFileExcel, faRedo } from '@fortawesome/free-solid-svg-icons';
 import Department from './components/Department/Department';
+import Allocation from './components/Department/Allocation';
 import { connect } from 'react-redux';
 library.add(faPlus, faAngleLeft, faSignOutAlt, faCheck, faInfo, faUpload, faMinus, faCaretDown, faFileExcel, faRedo)
 
@@ -29,6 +30,7 @@ function App(props) {
             <Route index element={auth.user.role === 0? <HomePage/> : <Department/>} />
             <Route path="home" element={<HomePage />} />
             <Route path="import" element={<Import />} />
+            <Route path="allocation" element={<Allocation />} />
             <Route path = "course/:courseName" element={<Course/>}/>
             <Route path = "student/:studentID" element={<Student/>}/>
           </Route>
