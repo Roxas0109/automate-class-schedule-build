@@ -38,6 +38,13 @@
   z-index: 2;
 }
 
+.finalized{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .popup-comp p {
   display: block;
   color: #4B5267;

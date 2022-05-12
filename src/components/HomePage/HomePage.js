@@ -97,7 +97,7 @@ export default function HomePage() {
 
     if (finalized){
       return (
-          <div>
+          <div className='finalized'>
             <h2>Finalized!</h2>
             <p>Your data is already finalized, there is nothing left to be done.</p>
           </div>

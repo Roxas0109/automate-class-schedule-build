@@ -128,13 +128,13 @@ export default function Student() {
                     {studentData != null && studentData.projectedCourses.map((obj, i) => {
                         return (
                             <div>
-                                <center><h4>{obj.course} {obj.term}</h4></center>
+                                <center><h4>{obj.course}</h4></center>
                             </div>
                         )
                     })}
                 </div>
             </div>
-            <center><button target="_blank" type="button" className="redBtn" onClick={getDPR}>Download DPR</button></center>
+            <center><button target="_blank" type="button" className="csn-btn" onClick={getDPR}>Download DPR</button></center>
         </div>
     )
 }

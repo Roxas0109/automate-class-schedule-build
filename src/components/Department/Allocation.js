@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ReactPaginate from 'react-paginate'
 import RequestUtils from '../../api/RequestUtils';
-import JSONdata from './MOCK_DATA.json'
 
 export default function Allocation() {
 
@@ -100,9 +99,9 @@ export default function Allocation() {
                     marginPagesDisplayed={1}
                     onPageChange={changePage}
                     containerClassName={'paginationBtnsCont'}
-                    pageLinkClassName={'paginationBtns'}
-                    previousLinkClassName={'pnBtns'}
-                    nextLinkClassName={'pnBtns'}
+                    pageLinkClassName={'csn-btn lol'}
+                    previousLinkClassName={'csn-btn lol'}
+                    nextLinkClassName={'csn-btn lol'}
                     activeLinkClassName={'pagActive'}
                     breakLinkClassName={'dots'}
                 />

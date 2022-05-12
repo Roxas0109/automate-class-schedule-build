@@ -38,10 +38,10 @@ export default function Import() {
             <div className="importWrapper">
                 <h1>Import Degree Progress Report (DPR)</h1>
                 <input className="import" type='file' accept='application/pdf' id='imp' onChange={handleChange}></input>
-                <label for='imp' className='redBtn'><FontAwesomeIcon className='ic' icon="upload"/>Import</label>
+                <label for='imp' className='csn-btn'><FontAwesomeIcon className='ic' icon="upload"/>Import</label>
                 <br/>
                 <br/>
-                <button className="redBtn" onClick={() => navigate("/")}>Return to home</button>
+                <button className="csn-btn" onClick={() => navigate("/")}>Return to home</button>
             </div>
         </div>
     )
