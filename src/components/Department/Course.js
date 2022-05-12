@@ -40,7 +40,7 @@ export default function Course() {
             <div className='course-wrapper'>
                 <h1>Course: {courseName}</h1>
                 <h2>Number of Students Projected for {courseData.projectedTerm}: {courseData.studentsProjected == 0 ? 0 :courseData.studentsProjected}</h2>
-                <Chart chartData={courseData.historicalData} />
+                <Chart chartData={courseData} />
             </div>
         </div>
     )

@@ -23,15 +23,24 @@ export const Chart = ({ chartData }) => {
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="term" />
+                <XAxis allowDuplicatedCategory={false} dataKey="term"/>
                 <YAxis />
                 <Tooltip />
                 <Legend />
                 <Line
                     type="monotone"
-                    dataKey="projectedTermAmount"
-                    name="Projected Term Amount"
+                    data={chartData.historicalData}
+                    dataKey= "completedTermAmount"
+                    name="Completed Term Amount"
                     stroke="#FF0000"
+                    activeDot={{ r: 8 }}
+                /> 
+                <Line
+                    type="monotone"
+                    data={chartData.projectedhistoricalData}
+                    dataKey= "projectedTermAmount"
+                    name="Projected Term Amount"
+                    stroke="#82ca9d"
                     activeDot={{ r: 8 }}
                 />
             </LineChart>
